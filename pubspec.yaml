@@ -37,6 +37,7 @@ dependencies:
   csv: ^5.0.1
   google_fonts: ^4.0.3
   get: ^4.6.5
+  font_awesome_flutter: ^10.4.0
 
 dev_dependencies:
   flutter_test:
