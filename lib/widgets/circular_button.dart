@@ -17,6 +17,7 @@ class CircularButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () => onTap(),
       child: Container(
         decoration: BoxDecoration(color: bgColor, shape: BoxShape.circle),
         padding: const EdgeInsets.all(25),
