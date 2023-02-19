@@ -1,22 +1,34 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:truthordare/module/questions.dart';
 import 'package:truthordare/theme/app_colors.dart';
 import 'package:truthordare/theme/app_styles.dart';
+import 'package:truthordare/utils/app_layout.dart';
 import 'package:truthordare/widgets/circular_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class QuestionScreen extends StatelessWidget {
+class QuestionScreen extends StatefulWidget {
   final bool isTruth;
   const QuestionScreen({super.key, required this.isTruth});
 
   @override
+  State<QuestionScreen> createState() => _QuestionScreenState();
+}
+
+class _QuestionScreenState extends State<QuestionScreen> {
+  @override
   Widget build(BuildContext context) {
+    Random rand = Random();
+    int index = rand.nextInt(Questions.length);
     return Scaffold(
-      backgroundColor: isTruth ? AppColors.truthBG : AppColors.dareBG,
+      backgroundColor: widget.isTruth ? AppColors.truthBG : AppColors.dareBG,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(40),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
@@ -27,25 +39,28 @@ class QuestionScreen extends StatelessWidget {
                       child: const Icon(
                         FontAwesomeIcons.chevronLeft,
                         color: AppColors.white,
-                        size: 32,
+                        size: 40,
                       ),
                     ),
                   ),
                 ],
               ),
-              Center(
-                  child: Column(
-                children: [
-                  Text(
-                    isTruth ? "Truth" : "Dare",
-                    style: AppStyles.headLineStyle1,
-                  ),
-                  Text(
-                    "something",
-                    style: AppStyles.headLineStyle3,
-                  ),
-                ],
-              )),
+              Gap(AppLayout.getHeight(80)),
+              Text(
+                widget.isTruth ? "Truth" : "Dare",
+                style: AppStyles.headLineStyle1,
+              ),
+              Gap(AppLayout.getHeight(30)),
+              Text(
+                widget.isTruth ? Questions.truth[index] : Questions.dare[index],
+                style: AppStyles.headLineStyle3,
+                textAlign: TextAlign.center,
+              ),
+
+              Expanded(child: Container()),
+
+              //? ----------------------------------- Next and Skip buttons -----------------------------------
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -53,13 +68,13 @@ class QuestionScreen extends StatelessWidget {
                     icon: FontAwesomeIcons.arrowRotateLeft,
                     bgColor: AppColors.darkBlue,
                     color: AppColors.white,
-                    onTap: () => print("Skip Question"),
+                    onTap: () => setState(() {}),
                   ),
                   CircularButton(
                     icon: FontAwesomeIcons.chevronRight,
                     bgColor: AppColors.darkBlue,
                     color: AppColors.white,
-                    onTap: () => print("Next Screen"),
+                    onTap: () => Navigator.pop(context),
                   ),
                 ],
               ),
