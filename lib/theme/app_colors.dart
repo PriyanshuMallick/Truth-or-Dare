@@ -12,8 +12,20 @@ class AppColors {
 
   //? -------------------- Selected Option BG Color --------------------
 
-  static Color get truthBG => const Color(0xff2196F3);
-  static Color get dareBG => const Color(0xffe85a5a);
+  static Color get truthBG => lightBlue1;
+  static Color get dareBG => peach2;
+
+  static const Color lightBlue1 = Color(0xff5ec6fe);
+  static const Color lightBlue2 = Color(0xff57adfc);
+  static const Color blue1 = Color(0xff218ffc);
+  static const Color blue2 = Color(0xff0d67f7);
+  static const Color blue3 = Color(0xff0a3e98);
+  static const Color darkBlue = Color(0xff161b29);
+  static const Color grey = Color(0xff525252);
+  static const Color red = Color(0xffe22021);
+  static const Color white = Color(0xfff2f4f6);
+  static const Color peach = Color(0xfff47f80);
+  static const Color peach2 = Color(0xfff25b5c);
 
   //? -------------------- Text Color --------------------
   static const Color textColor1 = Colors.white;
