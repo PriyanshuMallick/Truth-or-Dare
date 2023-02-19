@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:truthordare/module/questions.dart';
+
 import 'package:truthordare/screens/game_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  makeQuestions();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   runApp(const MyApp());
 }
 
