@@ -27,7 +27,7 @@ To get started with the app, follow these instructions:
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/truth-or-dare-game.git
+git clone https://github.com/PriyanshuMallick/Truth-or-Dare-game.git
 ```
 
 2. Open the project in your favorite IDE or editor.
@@ -88,7 +88,7 @@ Contributions to this project are welcome! If you find a bug, have an idea for a
 
 <br/>
 
-The app was created by [Your Name Here] as a personal project. The app uses the following third-party libraries:
+The app was created by Priyanshu Mallick as a personal project. The app uses the following third-party libraries:
 
 - flutter_launcher_icons
 - font_awesome_flutter
