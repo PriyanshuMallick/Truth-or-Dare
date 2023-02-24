@@ -46,7 +46,7 @@ class GameScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
+              const Text(
                 "Choose One",
                 style: AppStyles.headLineStyle1,
                 textAlign: TextAlign.center,
