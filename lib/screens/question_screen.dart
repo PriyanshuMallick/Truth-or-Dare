@@ -9,6 +9,8 @@ import 'package:truthordare/utils/app_layout.dart';
 import 'package:truthordare/widgets/circular_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../widgets/incremental_text.dart';
+
 class QuestionScreen extends StatefulWidget {
   final bool isTruth;
   const QuestionScreen({super.key, required this.isTruth});
@@ -51,10 +53,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 style: AppStyles.headLineStyle1,
               ),
               Gap(AppLayout.getHeight(30)),
-              Text(
-                widget.isTruth ? Questions.truth[index] : Questions.dare[index],
-                style: AppStyles.headLineStyle3,
-                textAlign: TextAlign.center,
+
+              IncrementalText(
+                text: widget.isTruth ? Questions.truth[index] : Questions.dare[index],
               ),
 
               Expanded(child: Container()),
@@ -68,7 +69,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     icon: FontAwesomeIcons.arrowRotateLeft,
                     bgColor: AppColors.darkBlue,
                     color: AppColors.white,
-                    onTap: () => setState(() {}),
+                    onTap: () => setState(() {
+                      index = rand.nextInt(Questions.length);
+                    }),
                   ),
                   CircularButton(
                     icon: FontAwesomeIcons.chevronRight,
