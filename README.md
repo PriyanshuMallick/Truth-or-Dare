@@ -1,16 +1,23 @@
-# Truth or Dare Game
+# 🎲 Truth or Dare Game 🤫
 
 This is a mobile app built in Flutter that lets you play the popular game "Truth or Dare". The app randomly selects a truth or a dare for you to complete, and you can choose to either answer the question truthfully or perform the dare.
 
 <br/>
+<br/>
 
-<!-- ## Installation
+## ✨ Status
+
+🚧 This app is currently under development. 🚧
+
+<br/>
+
+<!-- ## 📱🎮 Installation
 
 <br/>
 
 To install the app, follow these instructions:
 
-1. Download the executable file for your operating system from the [releases page](https://github.com/yourusername/truth-or-dare-game/releases).
+1. Download the executable file for your operating system from the [releases page](https://github.com/PriyanshuMallick/truth-or-dare-game/releases).
 
 2. Double-click the downloaded file to install the app.
 
@@ -18,7 +25,7 @@ To install the app, follow these instructions:
 
 <br/>
 
-## Getting Started
+## 🚀 Getting Started
 
 <br/>
 
@@ -46,7 +53,7 @@ flutter run
 
 <br/>
 
-## Usage
+## 🌟 Usage
 
 <br/>
 
@@ -64,7 +71,7 @@ Once you have the app up and running, you can start playing the game by followin
 
 <br/>
 
-## Features
+## 🎯 Features
 
 <br/>
 
@@ -76,7 +83,7 @@ The app includes the following features:
 
 <br/>
 
-## Contributing
+## 🤝 Contributing
 
 <br/>
 
@@ -84,7 +91,7 @@ Contributions to this project are welcome! If you find a bug, have an idea for a
 
 <br/>
 
-## Credits
+## 👏 Credits
 
 <br/>
 
@@ -103,11 +110,11 @@ The app was created by Priyanshu Mallick as a personal project. The app uses the
 
 <br/>
 
-This project is licensed under the MIT License - see the LICENSE file for details. -->
+This project is licensed under the License - see the LICENSE file for details. -->
 
 <br/>
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 <br/>
 
