@@ -1,58 +1,47 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
 import '../theme/app_styles.dart';
 
-class IncrementalText extends StatefulWidget {
+class IncrementalText extends StatelessWidget {
   final String text;
-  final TextStyle? style;
-  final TextAlign? textAlign;
+  final TextStyle style;
+  final TextAlign textAlign;
   final Duration duration;
+  final Color cursorColor;
+  final double cursorWidth;
+  final double cursorHeight;
+
   const IncrementalText({
     super.key,
     required this.text,
-    this.style,
+    this.style = AppStyles.headLineStyle3,
     this.duration = const Duration(milliseconds: 50),
-    this.textAlign,
+    this.textAlign = TextAlign.center,
+    this.cursorColor = Colors.black,
+    this.cursorWidth = 2.0,
+    this.cursorHeight = 20.0,
   });
-  @override
-  State<IncrementalText> createState() => _IncrementalTextState();
-}
 
-class _IncrementalTextState extends State<IncrementalText> {
-  String _displayedText = '';
-  int length = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    _startAnimation();
-  }
-
-  void _startAnimation() {
-    Timer.periodic(widget.duration, (timer) {
-      setState(() {
-        // if (_displayedText.length >= widget.text.length) {
-        if (length >= widget.text.length) {
-          length = 0;
-          timer.cancel();
-          return;
-        }
-
-        // _displayedText = widget.text.substring(0, _displayedText.length + 1);
-        _displayedText = widget.text.substring(0, length + 1);
-        length++;
-      });
-    });
+  Stream<String> get _textStream async* {
+    for (var i = 1; i <= text.length; i++) {
+      await Future.delayed(duration);
+      yield text.substring(0, i);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _displayedText,
-      style: widget.style ?? AppStyles.headLineStyle3,
-      textAlign: widget.textAlign ?? TextAlign.center,
+    return StreamBuilder<String>(
+      stream: _textStream,
+      builder: (context, snapshot) {
+        final displayedText = snapshot.data ?? '';
+        return Text(
+          displayedText,
+          style: style,
+          textAlign: textAlign,
+        );
+      },
     );
   }
 }
