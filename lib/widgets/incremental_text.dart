@@ -41,7 +41,70 @@ class IncrementalText extends StatelessWidget {
           style: style,
           textAlign: textAlign,
         );
+
+        //? Text With blinking cursor (_InsertHighlight)
+        // return Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     Flexible(
+        //       child: Text(
+        //         displayedText,
+        //         style: style,
+        //         textAlign: textAlign,
+        //       ),
+        //     ),
+        // if (displayedText.length != text.length) const _InsertHighlight()
+        // ],
+        // );
       },
+    );
+  }
+}
+
+class _InsertHighlight extends StatefulWidget {
+  const _InsertHighlight();
+
+  @override
+  State<_InsertHighlight> createState() => __InsertHighlightState();
+}
+
+class __InsertHighlightState extends State<_InsertHighlight> with SingleTickerProviderStateMixin {
+  final Duration duration = const Duration(milliseconds: 500);
+  late final AnimationController _controller;
+  late final Animation<double> _opacityAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: duration,
+    )..repeat(reverse: true);
+
+    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _opacityAnimation,
+      child: Container(
+        color: Colors.white,
+        height: 24,
+        width: 4,
+      ),
     );
   }
 }
