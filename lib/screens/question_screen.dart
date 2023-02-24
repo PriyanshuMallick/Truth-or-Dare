@@ -30,7 +30,6 @@ class _QuestionScreenState extends State<QuestionScreen> {
         child: Padding(
           padding: const EdgeInsets.all(40),
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [

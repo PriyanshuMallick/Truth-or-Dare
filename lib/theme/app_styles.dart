@@ -16,7 +16,7 @@ class AppStyles {
   );
   static const TextStyle headLineStyle3 = TextStyle(
     fontFamily: "Pattaya",
-    fontSize: 11,
+    fontSize: 26,
     color: AppColors.textColor1,
     fontWeight: FontWeight.w400,
   );
