@@ -7,7 +7,8 @@ import 'package:truthordare/screens/game_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   makeQuestions();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+
   runApp(const MyApp());
 }
 
