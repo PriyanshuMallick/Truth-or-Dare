@@ -3,7 +3,7 @@ import 'package:truthordare/theme/app_styles.dart';
 
 import '../theme/app_colors.dart';
 import '../widgets/fat_buttons.dart';
-import 'question_screen.dart';
+import 'question_screen_2.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({super.key});

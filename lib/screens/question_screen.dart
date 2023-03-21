@@ -48,7 +48,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
               ),
               Gap(AppLayout.getHeight(80)),
               Text(
-                widget.isTruth ? "Truth" : "Dare",
+                widget.isTruth ? 'Truth' : 'Dare',
                 style: AppStyles.headLineStyle1,
               ),
               Gap(AppLayout.getHeight(30)),
@@ -66,7 +66,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 children: [
                   CircularButton(
                     icon: FontAwesomeIcons.arrowRotateLeft,
-                    bgColor: AppColors.darkBlue,
+                    bgColor: AppColors.darkerBlue,
                     color: AppColors.white,
                     onTap: () => setState(() {
                       index = rand.nextInt(Questions.length);
@@ -74,7 +74,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   ),
                   CircularButton(
                     icon: FontAwesomeIcons.chevronRight,
-                    bgColor: AppColors.darkBlue,
+                    bgColor: AppColors.darkerBlue,
                     color: AppColors.white,
                     onTap: () => Navigator.pop(context),
                   ),
