@@ -8,34 +8,39 @@ class AppStyles {
     color: AppColors.textColor1,
     fontWeight: FontWeight.w900,
   );
+
   static const TextStyle headLineStyle1 = TextStyle(
     fontFamily: 'Pattaya',
     fontSize: 91,
     color: AppColors.textColor1,
     fontWeight: FontWeight.w400,
   );
-  static TextStyle headLineStyle2 = GoogleFonts.pirataOne(
-    // fontFamily: 'Pattaya',
+
+  static const TextStyle headLineStyle2 = TextStyle(
+    fontFamily: 'PirataOne',
     fontSize: 80,
     color: AppColors.textColor1,
     fontWeight: FontWeight.normal,
   );
-  static TextStyle headLineStyle3 = GoogleFonts.pirataOne(
-    // fontFamily: 'pirataOne',
+
+  static const TextStyle headLineStyle3 = TextStyle(
+    fontFamily: 'PirataOne',
     fontSize: 42.45,
     color: AppColors.textColor1,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.normal,
   );
-  static TextStyle headLineStyle4 = GoogleFonts.pirataOne(
-    // fontFamily: 'pirataOne',
+
+  static const TextStyle headLineStyle4 = TextStyle(
+    fontFamily: 'PirataOne',
     fontSize: 26,
     color: AppColors.textColor1,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.normal,
   );
-  static TextStyle headLineStyle5 = GoogleFonts.pirataOne(
-    // fontFamily: 'pirataOne',
+
+  static const TextStyle headLineStyle5 = TextStyle(
+    fontFamily: 'PirataOne',
     fontSize: 23,
     color: AppColors.textColor1,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.normal,
   );
 }

@@ -82,6 +82,9 @@ flutter:
     - family: Pattaya
       fonts:
         - asset: assets/fonts/Pattaya-Regular.ttf
+    - family: PirataOne
+      fonts:
+        - asset: assets/fonts/PirataOne-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

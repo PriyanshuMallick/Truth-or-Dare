@@ -15,7 +15,7 @@ class IncrementalText extends StatelessWidget {
   const IncrementalText({
     super.key,
     required this.text,
-    this.style = AppStyles.headLineStyle3,
+    this.style = AppStyles.headLineStyle4,
     this.duration = const Duration(milliseconds: 50),
     this.textAlign = TextAlign.center,
     this.cursorColor = Colors.black,
