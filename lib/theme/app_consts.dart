@@ -1,5 +1,8 @@
 //? This File contains constans for the app layout
 
-//? Padding
+import '../utils/app_layout.dart';
 
-class AppConsts {}
+class AppConsts {
+  static double cardHeight = AppLayout.getHeight(420);
+  static double cardWidth = AppLayout.getWidth(285);
+}
