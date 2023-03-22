@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:truthordare/theme/app_consts.dart';
 import 'package:truthordare/theme/app_styles.dart';
 import 'package:truthordare/utils/app_layout.dart';
+import 'package:truthordare/widgets/incremental_text.dart';
 
 class GameCard extends StatelessWidget {
   final String title;
@@ -36,10 +37,11 @@ class GameCard extends StatelessWidget {
           ),
           Gap(AppLayout.getHeight(100)),
           // Expanded(child: Container()),
-          Text(
-            subTitle,
-            style: AppStyles.headLineStyle4,
-          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppConsts.cardWidth * .1),
+            child: IncrementalText(text: subTitle),
+          )
           // Expanded(child: Container()),
         ],
       ),
