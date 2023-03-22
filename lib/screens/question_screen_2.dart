@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:truthordare/widgets/repeating_bg.dart';
@@ -18,8 +16,6 @@ class QuestionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Random rand = Random();
-    int index = rand.nextInt(Questions.length);
     return Scaffold(
       backgroundColor: isTruth ? AppColors.truthBG : AppColors.dareBG,
       body: Stack(
@@ -63,7 +59,7 @@ class QuestionScreen extends StatelessWidget {
                 const Gap(20),
                 GameCard(
                   title: 'Eve',
-                  subTitle: isTruth ? Questions.truth[index] : Questions.dare[index],
+                  subTitle: () => isTruth ? Questions.randomTruth : Questions.randomDare,
                   gradient: isTruth ? AppGradients.truthCardBG : AppGradients.dareCardBG,
                 ),
                 const Gap(50),
