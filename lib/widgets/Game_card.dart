@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:truthordare/theme/app_consts.dart';
@@ -7,7 +9,7 @@ import 'package:truthordare/widgets/incremental_text.dart';
 
 class GameCard extends StatelessWidget {
   final String title;
-  final String subTitle;
+  final Function subTitle;
   final List<Gradient> gradient;
 
   const GameCard({
@@ -19,7 +21,7 @@ class GameCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _Card(
+    return _StackedCards(
       repeat: 3,
       gradient: gradient,
       child: Column(
@@ -36,13 +38,10 @@ class GameCard extends StatelessWidget {
             color: Colors.white,
           ),
           Gap(AppLayout.getHeight(100)),
-          // Expanded(child: Container()),
-
           Padding(
             padding: EdgeInsets.symmetric(horizontal: AppConsts.cardWidth * .1),
-            child: IncrementalText(text: subTitle),
+            child: IncrementalText(text: subTitle()),
           )
-          // Expanded(child: Container()),
         ],
       ),
     );
@@ -50,11 +49,46 @@ class GameCard extends StatelessWidget {
 }
 
 class _Card extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
+  final Gradient gradient;
+  final Color? color;
+  const _Card({required this.gradient, required this.child, this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: AppConsts.cardHeight,
+      width: AppConsts.cardWidth,
+      decoration: BoxDecoration(
+        gradient: gradient,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Container(
+        color: color,
+        child: child,
+      ),
+    );
+  }
+}
+
+class _StackedCards extends StatelessWidget {
   final int repeat;
+  final Widget child;
+  final Color? color;
   final List<Gradient> gradient;
-  // ignore: unused_element
-  const _Card({required this.gradient, required this.child, this.repeat = 1});
+
+  final double scaleFactor;
+  final double opacityFactor;
+
+  const _StackedCards({
+    required this.child,
+    required this.gradient,
+    this.repeat = 1,
+    this.scaleFactor = .11,
+    this.opacityFactor = .2,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -65,30 +99,19 @@ class _Card extends StatelessWidget {
 
   List<Widget> getCards(int count) {
     List<Widget> cards = [];
-    const double scaleFactor = .11;
-    const double opacityFactor = .2;
-    const double gap = 445 / (scaleFactor * 100) - 30;
+    final double gap = 445 / (scaleFactor * 100) - 30;
 
     for (int i = 0; i < count; i++) {
       cards.add(
         Padding(
           padding: EdgeInsets.only(top: gap * i),
-          // padding: const EdgeInsets.only(top: 0),
           child: Transform.scale(
-            alignment: Alignment.topCenter,
             scale: 1 - scaleFactor * (repeat - i - 1),
-            child: Container(
-              height: AppConsts.cardHeight,
-              width: AppConsts.cardWidth,
-              decoration: BoxDecoration(
-                gradient: gradient[i < gradient.length ? i : gradient.length - 1],
-                borderRadius: BorderRadius.circular(14),
-              ),
-              clipBehavior: Clip.antiAlias,
-              child: Container(
-                color: Colors.black.withOpacity(opacityFactor * (repeat - i - 1)),
-                child: i == count - 1 ? child : null,
-              ),
+            alignment: Alignment.topCenter,
+            child: _Card(
+              gradient: gradient[i < gradient.length ? i : gradient.length - 1],
+              color: i != count - 1 ? Colors.black.withOpacity(opacityFactor * (count - i - 1)) : null,
+              child: i == count - 1 ? child : null,
             ),
           ),
         ),
