@@ -3,6 +3,10 @@
 import '../utils/app_layout.dart';
 
 class AppConsts {
-  static double cardHeight = AppLayout.getHeight(420);
-  static double cardWidth = AppLayout.getWidth(285);
+  //? Screen
+  static final double screenHeight = AppLayout.getScreenHeight();
+  static final double screenWidth = AppLayout.getScreenWidth();
+
+  static final double cardHeight = AppLayout.getHeight(420);
+  static final double cardWidth = AppLayout.getWidth(285);
 }
