@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:truthordare/theme/app_styles.dart';
 
+import '../module/question_provider.dart';
 import '../theme/app_colors.dart';
 import '../widgets/fat_buttons.dart';
 import 'question_screen.dart';
@@ -57,23 +59,28 @@ class GameScreen extends StatelessWidget {
                   FatButton(
                     text: 'Truth',
                     bgColor: AppColors.truthBG,
-                    //   onTap: () => print("Truth Pressed"),
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const QuestionScreen(isTruth: true),
-                      ),
-                    ),
+                    onTap: () {
+                      Provider.of<QuestionProvider>(context, listen: false).updateQuestion(true);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const QuestionScreen(isTruth: true),
+                        ),
+                      );
+                    },
                   ),
                   FatButton(
                     text: 'Dare',
                     bgColor: AppColors.dareBG,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const QuestionScreen(isTruth: false),
-                      ),
-                    ),
+                    onTap: () {
+                      Provider.of<QuestionProvider>(context, listen: false).updateQuestion(false);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const QuestionScreen(isTruth: false),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

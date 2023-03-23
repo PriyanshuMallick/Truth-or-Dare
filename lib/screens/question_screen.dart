@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
+import 'package:truthordare/module/question_provider.dart';
 import 'package:truthordare/widgets/rotated_pattern.dart';
 
-import '../module/questions.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_consts.dart';
 import '../theme/app_gradients.dart';
@@ -11,6 +12,7 @@ import '../widgets/fat_buttons.dart';
 import '../widgets/game_card.dart';
 
 class QuestionScreen extends StatelessWidget {
+  final _qProvider = Provider.of<QuestionProvider>;
   final bool isTruth;
   const QuestionScreen({super.key, required this.isTruth});
 
@@ -20,6 +22,7 @@ class QuestionScreen extends StatelessWidget {
       backgroundColor: isTruth ? AppColors.truthBG : AppColors.dareBG,
       body: Stack(
         children: [
+          //? --------------------------------- Background Pattern ---------------------------------
           RotatedPattern(
             column: 5,
             row: 6,
@@ -34,6 +37,8 @@ class QuestionScreen extends StatelessWidget {
               ),
             ),
           ),
+
+          //? ---------------------------------------- Main ----------------------------------------
           Container(
             height: AppConsts.screenHeight,
             width: AppConsts.screenWidth,
@@ -50,6 +55,7 @@ class QuestionScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                //? ----------------------------------- Heading -----------------------------------
                 Text(
                   isTruth ? 'TRUTH' : 'DARE',
                   style: AppStyles.headLineStyle2.copyWith(
@@ -57,11 +63,16 @@ class QuestionScreen extends StatelessWidget {
                   ),
                 ),
                 const Gap(20),
+
+                //? ------------------------------------ Cards ------------------------------------
                 GameCard(
                   title: 'Eve',
-                  subTitle: () => isTruth ? Questions.randomTruth : Questions.randomDare,
+                  subTitle: () => _qProvider(context).currentQuestion,
+                  onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth),
                   gradient: isTruth ? AppGradients.truthCardBG : AppGradients.dareCardBG,
                 ),
+
+                //? ----------------------------------- Buttons -----------------------------------
                 const Gap(50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +86,7 @@ class QuestionScreen extends StatelessWidget {
                     FatButton(
                       text: 'FORFEIT',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
-                      onTap: () => Navigator.pop(context),
+                      onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth),
                     ),
                   ],
                 )
