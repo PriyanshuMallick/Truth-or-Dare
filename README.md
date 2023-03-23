@@ -100,6 +100,7 @@ The app was created by Priyanshu Mallick as a personal project. The app uses the
 - flutter_launcher_icons
 - font_awesome_flutter
 - google_fonts
+- provider
 - csv
 - get
 - gap

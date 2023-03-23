@@ -7,7 +7,7 @@ import '../theme/app_consts.dart';
 import '../theme/app_styles.dart';
 import '../utils/app_layout.dart';
 import '../widgets/incremental_text.dart';
-import 'cards/animated_stacked_cards.dart';
+import 'cards/stacked_cards.dart';
 
 class GameCard extends StatelessWidget {
   final String title;
@@ -25,8 +25,8 @@ class GameCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AniStackedCards(
-      onTap: () => onTap(),
+    return StackedCards(
+      // onTap: () => onTap(),
       repeat: 3,
       gradient: gradient,
       child: Column(

@@ -28,72 +28,44 @@ class AniStackedCards extends StatefulWidget {
 }
 
 class _AniStackedCardsState extends State<AniStackedCards> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<Offset> _slideAnimation;
-
   int currentIndex = 0;
-  bool isAnimating = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1000),
-    );
-
-    _slideAnimation = Tween<Offset>(
-      begin: Offset.zero,
-      // ignore: prefer_const_constructors
-      end: Offset(5, 5),
-    ).animate(_animationController);
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
+  double dragDistance = 0;
 
   void _onPanUpdate(DragUpdateDetails details) {
-    if (!isAnimating) {
-      setState(() {});
-      _animationController.value = details.delta.dx / context.size!.width;
-    }
+    dragDistance = details.delta.distance;
   }
 
   void _onPanEnd(DragEndDetails details) {
-    if (_animationController.value.abs() > 2) {
+    if (dragDistance > 1) {
       widget.onTap();
-      isAnimating = true;
-      _animationController.forward().then((_) {
-        setState(() {
-          currentIndex++;
-          isAnimating = false;
-        });
-      });
-    } else {
-      isAnimating = true;
-      _animationController.reverse().then((_) {
-        setState(() {
-          isAnimating = false;
-        });
-      });
+      print('\n$dragDistance\n');
+      dragDistance = 0;
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        for (int i = currentIndex; i < currentIndex + widget.repeat; i++)
+          if (i >= 0) _buildCardWidget(i),
+      ],
+    );
   }
 
   Widget _buildCardWidget(int index) {
     final double gap = 445 / (widget.scaleFactor * 100) - 30;
     final double topPadding = gap * index;
 
-    return Padding(
-      padding: EdgeInsets.only(top: topPadding),
-      child: Transform.scale(
-        scale: 1 - widget.scaleFactor * (widget.repeat - index - 1),
-        alignment: Alignment.topCenter,
-        child: SlideTransition(
-          position: _slideAnimation,
+    return GestureDetector(
+      onPanUpdate: _onPanUpdate,
+      onPanEnd: _onPanEnd,
+      // onTap: () => widget.onTap(),
+      child: Padding(
+        padding: EdgeInsets.only(top: topPadding),
+        child: Transform.scale(
+          scale: 1 - widget.scaleFactor * (widget.repeat - index - 1),
+          alignment: Alignment.topCenter,
           child: MyCard(
             gradient: widget.gradient[index < widget.gradient.length ? index : widget.gradient.length - 1],
             color: index != widget.repeat - 1
@@ -102,21 +74,6 @@ class _AniStackedCardsState extends State<AniStackedCards> with SingleTickerProv
             child: index == widget.repeat - 1 ? widget.child : null,
           ),
         ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onPanUpdate: _onPanUpdate,
-      onPanEnd: _onPanEnd,
-      // onTap: () => widget.onTap(),
-      child: Stack(
-        children: [
-          for (int i = currentIndex; i < currentIndex + widget.repeat; i++)
-            if (i >= 0) _buildCardWidget(i),
-        ],
       ),
     );
   }
