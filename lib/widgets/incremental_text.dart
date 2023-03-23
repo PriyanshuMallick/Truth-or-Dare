@@ -41,25 +41,26 @@ class IncrementalText extends StatelessWidget {
           style: style,
           textAlign: textAlign,
         );
-
-        //? Text With blinking cursor (_InsertHighlight)
-        // return Row(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     Flexible(
-        //       child: Text(
-        //         displayedText,
-        //         style: style,
-        //         textAlign: textAlign,
-        //       ),
-        //     ),
-        // if (displayedText.length != text.length) const _InsertHighlight()
-        // ],
-        // );
       },
     );
   }
 }
+
+//? Text With blinking cursor (_InsertHighlight)
+//? Replace the return value of IncrementalText's build method with this one
+// return Row(
+//   mainAxisAlignment: MainAxisAlignment.center,
+//   children: [
+//     Flexible(
+//       child: Text(
+//         displayedText,
+//         style: style,
+//         textAlign: textAlign,
+//       ),
+//     ),
+// if (displayedText.length != text.length) const _InsertHighlight()
+// ],
+// );
 
 class _InsertHighlight extends StatefulWidget {
   const _InsertHighlight();

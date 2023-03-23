@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:truthordare/theme/app_consts.dart';
-import 'package:truthordare/theme/app_styles.dart';
-import 'package:truthordare/utils/app_layout.dart';
-import 'package:truthordare/widgets/incremental_text.dart';
+
+import '../theme/app_consts.dart';
+import '../theme/app_styles.dart';
+import '../utils/app_layout.dart';
+import '../widgets/incremental_text.dart';
 
 class GameCard extends StatelessWidget {
   final String title;
@@ -117,7 +118,6 @@ class _StackedCards extends StatelessWidget {
         ),
       );
     }
-
     return cards;
   }
 }
@@ -147,6 +147,10 @@ class _AniStackedCards extends StatefulWidget {
 class _AniStackedCardsState extends State<_AniStackedCards> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Offset> _slideAnimation;
+  late Animation<double> _leftAnimation;
+  late Animation<double> _topAnimation;
+  late Animation<double> _scaleAnimation;
+  late Animation<double> _differenceAnimation;
 
   int currentIndex = 0;
   bool isAnimating = false;

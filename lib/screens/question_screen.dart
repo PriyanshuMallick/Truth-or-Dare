@@ -1,88 +1,88 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:truthordare/module/questions.dart';
-import 'package:truthordare/theme/app_colors.dart';
-import 'package:truthordare/theme/app_styles.dart';
-import 'package:truthordare/utils/app_layout.dart';
-import 'package:truthordare/widgets/circular_button.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:truthordare/widgets/rotated_pattern.dart';
 
-import '../widgets/incremental_text.dart';
+import '../module/questions.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_consts.dart';
+import '../theme/app_gradients.dart';
+import '../theme/app_styles.dart';
+import '../widgets/fat_buttons.dart';
+import '../widgets/game_card.dart';
 
-class QuestionScreen extends StatefulWidget {
+class QuestionScreen extends StatelessWidget {
   final bool isTruth;
   const QuestionScreen({super.key, required this.isTruth});
 
   @override
-  State<QuestionScreen> createState() => _QuestionScreenState();
-}
-
-class _QuestionScreenState extends State<QuestionScreen> {
-  @override
   Widget build(BuildContext context) {
-    Random rand = Random();
-    int index = rand.nextInt(Questions.length);
     return Scaffold(
-      backgroundColor: widget.isTruth ? AppColors.truthBG : AppColors.dareBG,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(40),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Container(
-                      decoration: const BoxDecoration(shape: BoxShape.circle),
-                      child: const Icon(
-                        FontAwesomeIcons.chevronLeft,
-                        color: AppColors.white,
-                        size: 40,
-                      ),
-                    ),
-                  ),
-                ],
+      backgroundColor: isTruth ? AppColors.truthBG : AppColors.dareBG,
+      body: Stack(
+        children: [
+          RotatedPattern(
+            column: 5,
+            row: 6,
+            gap: 40,
+            degree: -17,
+            scale: 3.5,
+            widget: Text(
+              isTruth ? '?' : '!',
+              style: AppStyles.headLineStyle2.copyWith(
+                fontSize: 50,
+                color: const Color.fromARGB(8, 255, 255, 255),
               ),
-              Gap(AppLayout.getHeight(80)),
-              Text(
-                widget.isTruth ? 'Truth' : 'Dare',
-                style: AppStyles.headLineStyle1,
-              ),
-              Gap(AppLayout.getHeight(30)),
-
-              IncrementalText(
-                text: widget.isTruth ? Questions.truth[index] : Questions.dare[index],
-              ),
-
-              Expanded(child: Container()),
-
-              //? ----------------------------------- Next and Skip buttons -----------------------------------
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CircularButton(
-                    icon: FontAwesomeIcons.arrowRotateLeft,
-                    bgColor: AppColors.darkerBlue,
-                    color: AppColors.white,
-                    onTap: () => setState(() {
-                      index = rand.nextInt(Questions.length);
-                    }),
-                  ),
-                  CircularButton(
-                    icon: FontAwesomeIcons.chevronRight,
-                    bgColor: AppColors.darkerBlue,
-                    color: AppColors.white,
-                    onTap: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
-        ),
+          Container(
+            height: AppConsts.screenHeight,
+            width: AppConsts.screenWidth,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.center,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.transparent,
+                  Color.fromARGB(70, 0, 0, 0),
+                ],
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  isTruth ? 'TRUTH' : 'DARE',
+                  style: AppStyles.headLineStyle2.copyWith(
+                    color: isTruth ? AppColors.truthText : AppColors.dareText,
+                  ),
+                ),
+                const Gap(20),
+                GameCard(
+                  title: 'Eve',
+                  subTitle: () => isTruth ? Questions.randomTruth : Questions.randomDare,
+                  gradient: isTruth ? AppGradients.truthCardBG : AppGradients.dareCardBG,
+                ),
+                const Gap(50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FatButton(
+                      text: 'COMPLETED',
+                      bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
+                      onTap: () => Navigator.pop(context),
+                    ),
+                    const Gap(15),
+                    FatButton(
+                      text: 'FORFEIT',
+                      bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
+                      onTap: () => Navigator.pop(context),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

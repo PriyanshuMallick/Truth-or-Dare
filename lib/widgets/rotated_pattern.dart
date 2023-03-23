@@ -36,7 +36,7 @@ class RotatedPattern extends StatelessWidget {
     );
   }
 
-  Column buildPattern(Widget widget) {
+  Widget buildPattern(Widget widget) {
     List<Widget> rows = [];
     List<Widget> cols = [];
     int x = 0;

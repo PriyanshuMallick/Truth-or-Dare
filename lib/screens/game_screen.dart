@@ -3,7 +3,7 @@ import 'package:truthordare/theme/app_styles.dart';
 
 import '../theme/app_colors.dart';
 import '../widgets/fat_buttons.dart';
-import 'question_screen_2.dart';
+import 'question_screen.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({super.key});
@@ -47,7 +47,7 @@ class GameScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text(
-                "Choose One",
+                'Choose One',
                 style: AppStyles.headLineStyle1,
                 textAlign: TextAlign.center,
               ),
@@ -55,7 +55,7 @@ class GameScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   FatButton(
-                    text: "Truth",
+                    text: 'Truth',
                     bgColor: AppColors.truthBG,
                     //   onTap: () => print("Truth Pressed"),
                     onTap: () => Navigator.push(
@@ -66,7 +66,7 @@ class GameScreen extends StatelessWidget {
                     ),
                   ),
                   FatButton(
-                    text: "Dare",
+                    text: 'Dare',
                     bgColor: AppColors.dareBG,
                     onTap: () => Navigator.push(
                       context,
