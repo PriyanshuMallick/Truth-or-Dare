@@ -32,8 +32,23 @@ class AppColors {
   static const Color peach2 = Color(0xfff25b5c);
 
   // New
+  static Color get homeScreenIcon => lightPurple;
+  static Color get homeScreenBottomNavBorder => const Color(0xff5C4117);
+
   static const Color darkRed = Color(0xff4E1D1E);
+  static const Color darkerRed = Color(0xff500506);
   static const Color darkBlue = Color(0xff1E4052);
+  static const Color darkerPurple = Color(0xff190528);
+  static const Color darkPurple = Color(0xff4D1C69);
+  static const Color purple = Color(0xff3E1257);
+  static const Color lightPurple = Color(0xffA635FF);
+
+  // List
+  static const List<Color> homeScreen = [
+    darkerPurple,
+    darkPurple,
+    darkerRed,
+  ];
   static const List<Color> dareCard = [
     Color(0xffFF9292),
     Color(0xffD94242),
