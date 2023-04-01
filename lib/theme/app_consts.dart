@@ -7,6 +7,6 @@ class AppConsts {
   static final double screenHeight = AppLayout.getScreenHeight();
   static final double screenWidth = AppLayout.getScreenWidth();
 
-  static final double cardHeight = AppLayout.getHeight(420);
-  static final double cardWidth = AppLayout.getWidth(285);
+  static const double cardHeight = 420;
+  static const double cardWidth = 285;
 }
