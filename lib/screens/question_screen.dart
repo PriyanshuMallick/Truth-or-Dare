@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
-import 'package:truthordare/module/question_provider.dart';
-import 'package:truthordare/widgets/rotated_pattern.dart';
+import 'package:truthordare/utils/question_provider.dart';
+import 'package:truthordare/widgets/stylish/rotated_pattern.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/app_consts.dart';
 import '../theme/app_gradients.dart';
 import '../theme/app_styles.dart';
-import '../widgets/fat_buttons.dart';
-import '../widgets/game_card.dart';
+import '../widgets/buttons/fat_buttons.dart';
+import '../widgets/cards/game_card.dart';
 
 class QuestionScreen extends StatelessWidget {
   final _qProvider = Provider.of<QuestionProvider>;

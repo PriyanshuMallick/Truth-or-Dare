@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../utils/app_layout.dart';
+import '../../utils/app_layout.dart';
 
 class RotatedPattern extends StatelessWidget {
   final int column;

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import '../theme/app_styles.dart';
+import '../../theme/app_styles.dart';
 
 class IncrementalText extends StatelessWidget {
   final String text;
