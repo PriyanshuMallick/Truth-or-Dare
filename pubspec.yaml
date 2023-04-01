@@ -94,5 +94,5 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
 flutter_native_splash:
-  color: "#1E0921"
-  image: assets/splashscreen/SplashScreenTest.png
+  color: "#190529"
+  image: assets/logo/app_logo_test.png
