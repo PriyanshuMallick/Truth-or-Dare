@@ -6,7 +6,12 @@ class StackedCards extends StatelessWidget {
   final int repeat;
   final Widget child;
   final Color? color;
-  final List<Gradient> gradient;
+  final List<List<Gradient>> gradients;
+  final double? cardHeight;
+  final double? cardWidth;
+  final double gap;
+  final bool darken;
+  final List<BoxShadow>? boxShadow;
 
   final double scaleFactor;
   final double opacityFactor;
@@ -14,11 +19,16 @@ class StackedCards extends StatelessWidget {
   const StackedCards({
     super.key,
     required this.child,
-    required this.gradient,
+    required this.gradients,
     this.repeat = 1,
     this.scaleFactor = .11,
     this.opacityFactor = .2,
     this.color,
+    this.cardHeight,
+    this.cardWidth,
+    this.gap = 0,
+    this.darken = true,
+    this.boxShadow,
   });
 
   @override
@@ -30,7 +40,7 @@ class StackedCards extends StatelessWidget {
 
   List<Widget> getCards(int count) {
     List<Widget> cards = [];
-    final double gap = 445 / (scaleFactor * 100) - 30;
+    final double gap = (445 / (scaleFactor * 100) - 30 + this.gap).abs();
 
     for (int i = 0; i < count; i++) {
       cards.add(
@@ -40,8 +50,10 @@ class StackedCards extends StatelessWidget {
             scale: 1 - scaleFactor * (repeat - i - 1),
             alignment: Alignment.topCenter,
             child: MyCard(
-              gradient: gradient[i < gradient.length ? i : gradient.length - 1],
-              color: i != count - 1 ? Colors.black.withOpacity(opacityFactor * (count - i - 1)) : null,
+              boxShadow: boxShadow,
+              gradients: gradients[i < gradients.length ? i : gradients.length - 1],
+              color: i != count - 1 && darken ? Colors.black.withOpacity(opacityFactor * (count - i - 1)) : null,
+              cardHeight: cardHeight,
               child: i == count - 1 ? child : null,
             ),
           ),

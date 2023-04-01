@@ -1,26 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:truthordare/widgets/stylish/gradient_stack.dart';
 
 import '../../theme/app_consts.dart';
 
 class MyCard extends StatelessWidget {
   final Widget? child;
-  final Gradient gradient;
+  final List<Gradient> gradients;
   final Color? color;
-  const MyCard({super.key, required this.gradient, required this.child, this.color});
+  final double? cardHeight;
+  final double? cardWidth;
+  final List<BoxShadow>? boxShadow;
+  const MyCard({
+    super.key,
+    required this.gradients,
+    this.child,
+    this.color,
+    this.cardHeight,
+    this.cardWidth,
+    this.boxShadow,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppConsts.cardHeight,
-      width: AppConsts.cardWidth,
+      height: cardHeight ?? AppConsts.cardHeight,
+      width: cardWidth ?? AppConsts.cardWidth,
       decoration: BoxDecoration(
-        gradient: gradient,
         borderRadius: BorderRadius.circular(14),
+        boxShadow: boxShadow,
       ),
       clipBehavior: Clip.antiAlias,
-      child: Container(
-        color: color,
-        child: child,
+      child: GradientStack(
+        gradients: gradients,
+        child: color == null
+            ? child
+            : Container(
+                color: color,
+                child: child,
+              ),
       ),
     );
   }

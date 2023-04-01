@@ -6,7 +6,7 @@ class AniStackedCards extends StatefulWidget {
   final int repeat;
   final Widget child;
   final Color? color;
-  final List<Gradient> gradient;
+  final List<List<Gradient>> gradients;
   final Function onTap;
 
   final double scaleFactor;
@@ -15,7 +15,7 @@ class AniStackedCards extends StatefulWidget {
   const AniStackedCards({
     super.key,
     required this.child,
-    required this.gradient,
+    required this.gradients,
     required this.onTap,
     this.repeat = 1,
     this.scaleFactor = .11,
@@ -67,7 +67,7 @@ class _AniStackedCardsState extends State<AniStackedCards> with SingleTickerProv
           scale: 1 - widget.scaleFactor * (widget.repeat - index - 1),
           alignment: Alignment.topCenter,
           child: MyCard(
-            gradient: widget.gradient[index < widget.gradient.length ? index : widget.gradient.length - 1],
+            gradients: widget.gradients[index < widget.gradients.length ? index : widget.gradients.length - 1],
             color: index != widget.repeat - 1
                 ? Colors.black.withOpacity(widget.opacityFactor * (widget.repeat - index - 1))
                 : null,
