@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
-import 'package:truthordare/screens/bottom_bar.dart';
 
-// import 'screens/splash_screen.dart';
+import 'screens/bottom_nav_bar.dart';
 import 'utils/question_provider.dart';
 import 'utils/questions.dart';
 
@@ -31,10 +30,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/main',
       routes: {
-        // '/': (context) => const SplashScreen(),
-        '/home': (context) => const BottomBar(),
+        '/main': (context) => const BottomNavBar(),
       },
     );
   }
