@@ -18,7 +18,13 @@ class Questions {
 }
 
 Future<void> readCSV() async {
-  final csvString = await rootBundle.loadString('assets/___/Truth-or-Dare-Questions - Sheet1.csv');
+  String csvString;
+  try {
+    // This CSV file in not on GitHub
+    csvString = await rootBundle.loadString('assets/___/Truth-or-Dare-Questions - Sheet1.csv');
+  } catch (e) {
+    csvString = await rootBundle.loadString('assets/questions.csv');
+  }
   final List<List<dynamic>> rows = const CsvToListConverter().convert(csvString);
 
 // Remove the header row from the list of rows
