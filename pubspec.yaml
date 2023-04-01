@@ -41,6 +41,7 @@ dependencies:
   gap: ^2.0.1
   provider: ^6.0.5
   fluttertoast: ^8.2.1
+  flutter_native_splash: ^2.2.19
 
 dev_dependencies:
   flutter_test:
@@ -84,19 +85,14 @@ flutter:
     - family: Pattaya
       fonts:
         - asset: assets/fonts/Pattaya-Regular.ttf
+
     - family: PirataOne
       fonts:
         - asset: assets/fonts/PirataOne-Regular.ttf
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+  color: "#1E0921"
+  image: assets/splashscreen/SplashScreenTest.png
