@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
+import 'package:truthordare/screens/bottom_bar.dart';
 
-import 'module/questions.dart';
-import 'module/question_provider.dart';
-import 'screens/home_screen.dart';
+// import 'screens/splash_screen.dart';
+import 'utils/question_provider.dart';
+import 'utils/questions.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   makeQuestions();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+
+  await Future.delayed(const Duration(seconds: 2));
+  FlutterNativeSplash.remove();
 
   runApp(
     ChangeNotifierProvider(
@@ -24,9 +29,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      initialRoute: '/home',
+      routes: {
+        // '/': (context) => const SplashScreen(),
+        '/home': (context) => const BottomBar(),
+      },
     );
   }
 }
