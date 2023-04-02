@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../../theme/app_styles.dart';
@@ -7,25 +8,21 @@ class IncrementalText extends StatelessWidget {
   final String text;
   final TextStyle style;
   final TextAlign textAlign;
-  final Duration delay;
-  // final Color cursorColor;
-  // final double cursorWidth;
-  // final double cursorHeight;
+  final Duration speed;
+  final bool isBlur;
 
   const IncrementalText({
     super.key,
     required this.text,
     this.style = AppStyles.headLineStyle4,
-    this.delay = const Duration(milliseconds: 50),
+    this.speed = const Duration(milliseconds: 50),
     this.textAlign = TextAlign.center,
-    // this.cursorColor = Colors.black,
-    // this.cursorWidth = 2.0,
-    // this.cursorHeight = 20.0,
+    this.isBlur = true,
   });
 
   Stream<String> get _textStream async* {
     for (var i = 1; i <= text.length; i++) {
-      await Future.delayed(delay);
+      await Future.delayed(speed);
       yield text.substring(0, i);
     }
   }
@@ -36,10 +33,25 @@ class IncrementalText extends StatelessWidget {
       stream: _textStream,
       builder: (context, snapshot) {
         final displayedText = snapshot.data ?? '';
-        return Text(
-          displayedText,
-          style: style,
-          textAlign: textAlign,
+        if (!isBlur || displayedText.length >= text.length) {
+          return Text(
+            displayedText,
+            style: style,
+            textAlign: textAlign,
+          );
+        }
+        double blur = text.length / displayedText.length - 1;
+        if (blur < 0) blur = 0;
+        return ImageFiltered(
+          imageFilter: ImageFilter.blur(
+            sigmaX: blur,
+            sigmaY: blur,
+          ),
+          child: Text(
+            displayedText,
+            style: style,
+            textAlign: textAlign,
+          ),
         );
       },
     );
