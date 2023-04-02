@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'questions.dart';
+import '../module/questions.dart';
 
 class QuestionProvider extends ChangeNotifier {
   String _currentQuestion = '';

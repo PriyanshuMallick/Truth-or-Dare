@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'screens/bottom_nav_bar.dart';
 import 'utils/question_provider.dart';
-import 'utils/questions.dart';
+import 'module/questions.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
