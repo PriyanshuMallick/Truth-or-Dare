@@ -23,6 +23,25 @@ class AppGradients {
       colors: AppColors.truthCard,
     ),
   ];
+  static const List<LinearGradient> purpleCardBG = [
+    LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFFA635FF),
+        Color(0xFF932EDC),
+        Color(0xFF3E1257),
+      ],
+    ),
+    LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFFA635FF),
+        Color(0xFF3E1257),
+      ],
+    ),
+  ];
 
   static const List<LinearGradient> bottomNavBG = [
     LinearGradient(
