@@ -6,21 +6,26 @@ import 'package:gap/gap.dart';
 import '../../theme/app_consts.dart';
 import '../../theme/app_styles.dart';
 import '../../utils/app_layout.dart';
-import '../stylish/incremental_text.dart';
 import 'stacked_cards.dart';
 
 class GameCard extends StatelessWidget {
-  final String title;
-  final Function subTitle;
-  final Function onTap;
+  final String? title;
+  final Widget? titleWidget;
+  final Widget? child;
+  final Function? onTap;
   final List<Gradient> gradient;
+  final double gap;
+  final bool center;
 
   const GameCard({
     super.key,
-    required this.title,
-    required this.subTitle,
+    this.title,
+    this.titleWidget,
+    this.child,
     required this.gradient,
-    required this.onTap,
+    this.onTap,
+    this.gap = 100,
+    this.center = false,
   });
 
   @override
@@ -32,21 +37,25 @@ class GameCard extends StatelessWidget {
       child: Column(
         children: [
           Gap(AppLayout.getHeight(20)),
-          Text(
-            title,
-            style: AppStyles.headLineStyle3,
-          ),
+          if (title != null)
+            Text(
+              title ?? "",
+              style: AppStyles.headLineStyle3,
+            ),
+          if (titleWidget != null) titleWidget!,
           Gap(AppLayout.getHeight(5)),
           Container(
             height: 1,
             width: AppConsts.cardWidth * .85,
             color: Colors.white,
           ),
-          Gap(AppLayout.getHeight(100)),
+          if (!center) Gap(AppLayout.getHeight(gap)),
+          if (center) Expanded(child: Container()),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppConsts.cardWidth * .1),
-            child: IncrementalText(text: subTitle()),
-          )
+            child: child,
+          ),
+          if (center) Expanded(child: Container()),
         ],
       ),
     );

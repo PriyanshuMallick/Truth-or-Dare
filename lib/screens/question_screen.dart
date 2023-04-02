@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
-import 'package:truthordare/utils/question_provider.dart';
-import 'package:truthordare/widgets/stylish/rotated_pattern.dart';
 
+import '../settings/players_info.dart';
+import '../utils/question_provider.dart';
+import '../widgets/stylish/incremental_text.dart';
+import '../widgets/stylish/rotated_pattern.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_consts.dart';
 import '../theme/app_gradients.dart';
@@ -66,10 +68,10 @@ class QuestionScreen extends StatelessWidget {
 
                 //? ------------------------------------ Cards ------------------------------------
                 GameCard(
-                  title: 'Eve',
-                  subTitle: () => _qProvider(context).currentQuestion,
+                  title: PlayersInfo.currentPlayer.name,
                   onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth),
                   gradient: isTruth ? AppGradients.truthCardBG : AppGradients.dareCardBG,
+                  child: IncrementalText(text: _qProvider(context).currentQuestion),
                 ),
 
                 //? ----------------------------------- Buttons -----------------------------------
