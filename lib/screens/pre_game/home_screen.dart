@@ -1,12 +1,17 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../settings/players_info.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_gradients.dart';
 import '../../theme/app_styles.dart';
-import '../../widgets/buttons/fat_buttons.dart';
-import '../../widgets/stylish/gradient_stack.dart';
 import '../../utils/question_provider.dart';
+import '../../widgets/buttons/fat_buttons.dart';
+import '../../widgets/cards/game_card.dart';
+import '../../widgets/stylish/Changing_text.dart';
+import '../../widgets/stylish/gradient_stack.dart';
 import '../question_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,10 +29,40 @@ class HomeScreen extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Text(
-              'TRUTH\nOR\nDARE',
-              textAlign: TextAlign.center,
-              style: AppStyles.headLineStyle1,
+            GameCard(
+              title: 'Choose',
+              gradient: AppGradients.purpleCardBG,
+              onTap: () => print('Tapped'),
+              child: Column(
+                children: [
+                  ImageFiltered(
+                    imageFilter: ImageFilter.blur(
+                      sigmaX: 1.5,
+                      sigmaY: 1.5,
+                    ),
+                    child: ChangingText(
+                      text: '',
+                      changingText: () => PlayersInfo.getRandomPlayer().name,
+                      style: AppStyles.headLineStyle4.copyWith(color: const Color.fromRGBO(255, 255, 255, .2)),
+                    ),
+                  ),
+                  ChangingText(
+                    text: PlayersInfo.getRandomPlayer().name,
+                    changingText: () => PlayersInfo.getRandomPlayer().name,
+                  ),
+                  ImageFiltered(
+                    imageFilter: ImageFilter.blur(
+                      sigmaX: 1.5,
+                      sigmaY: 1.5,
+                    ),
+                    child: ChangingText(
+                      text: '',
+                      changingText: () => PlayersInfo.getRandomPlayer().name,
+                      style: AppStyles.headLineStyle4.copyWith(color: const Color.fromRGBO(255, 255, 255, .2)),
+                    ),
+                  ),
+                ],
+              ),
             ),
 
             //? Buttons
