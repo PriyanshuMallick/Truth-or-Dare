@@ -1,1 +1,3 @@
-class GameSettings {}
+class GameSettings {
+  static bool canGoToQuestionScreen = true;
+}
