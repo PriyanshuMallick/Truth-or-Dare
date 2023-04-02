@@ -1,5 +1,3 @@
-// ignore_for_file: unused_element
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -39,7 +37,7 @@ class GameCard extends StatelessWidget {
           Gap(AppLayout.getHeight(20)),
           if (title != null)
             Text(
-              title ?? "",
+              title ?? '',
               style: AppStyles.headLineStyle3,
             ),
           if (titleWidget != null) titleWidget!,

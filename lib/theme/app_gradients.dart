@@ -29,7 +29,6 @@ class AppGradients {
       end: Alignment.bottomRight,
       colors: [
         Color(0xFFA635FF),
-        Color(0xFF932EDC),
         Color(0xFF3E1257),
       ],
     ),
@@ -38,6 +37,7 @@ class AppGradients {
       end: Alignment.bottomRight,
       colors: [
         Color(0xFFA635FF),
+        Color(0xFF932EDC),
         Color(0xFF3E1257),
       ],
     ),
@@ -98,7 +98,7 @@ class AppGradients {
     end: Alignment.bottomCenter,
     colors: [
       Colors.transparent,
-      Colors.black,
+      Color.fromARGB(255, 14, 0, 24),
     ],
   );
 }
