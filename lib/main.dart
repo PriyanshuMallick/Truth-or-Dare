@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
+import 'package:truthordare/utils/player_provider.dart';
 
 import 'screens/bottom_nav_bar.dart';
 import 'utils/question_provider.dart';
@@ -14,10 +15,12 @@ void main() async {
 
   await Future.delayed(const Duration(seconds: 2));
   FlutterNativeSplash.remove();
-
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => QuestionProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => QuestionProvider()),
+        ChangeNotifierProvider(create: (_) => PlayerProvider()),
+      ],
       child: const MyApp(),
     ),
   );
