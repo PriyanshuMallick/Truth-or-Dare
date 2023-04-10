@@ -19,8 +19,8 @@ import 'package:truthordare/widgets/stylish/incremental_text.dart';
 
 int testInt = 0;
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class GameScreen extends StatelessWidget {
+  const GameScreen({super.key});
   final _pProvider = Provider.of<PlayerProvider>;
   @override
   Widget build(BuildContext context) {

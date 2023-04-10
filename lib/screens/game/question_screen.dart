@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
-import '../settings/players_info.dart';
-import '../utils/question_provider.dart';
-import '../widgets/stylish/incremental_text.dart';
-import '../widgets/stylish/rotated_pattern.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_consts.dart';
-import '../theme/app_gradients.dart';
-import '../theme/app_styles.dart';
-import '../widgets/buttons/fat_buttons.dart';
-import '../widgets/cards/game_card.dart';
+import '../../settings/players_info.dart';
+import '../../utils/question_provider.dart';
+import '../../widgets/stylish/incremental_text.dart';
+import '../../widgets/stylish/rotated_pattern.dart';
+import '../../theme/app_colors.dart';
+import '../../theme/app_consts.dart';
+import '../../theme/app_gradients.dart';
+import '../../theme/app_styles.dart';
+import '../../widgets/buttons/fat_buttons.dart';
+import '../../widgets/cards/game_card.dart';
 
 class QuestionScreen extends StatelessWidget {
   final _qProvider = Provider.of<QuestionProvider>;
