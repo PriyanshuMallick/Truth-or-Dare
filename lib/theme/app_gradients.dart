@@ -82,6 +82,26 @@ class AppGradients {
     ),
   ];
 
+  static const List<LinearGradient> playerInfoBG2 = [
+    LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color.fromARGB(74, 176, 73, 255),
+        Color.fromARGB(74, 171, 53, 255),
+        Color(0x4B3E1257),
+      ],
+    ),
+    LinearGradient(
+      begin: Alignment.center,
+      end: Alignment.bottomCenter,
+      colors: [
+        Colors.transparent,
+        Color.fromARGB(59, 22, 4, 28),
+      ],
+    ),
+  ];
+
   static const List<LinearGradient> mainScreenBG = [
     homeScreen,
     transparent2Black,
