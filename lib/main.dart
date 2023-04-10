@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
-import 'package:truthordare/utils/player_provider.dart';
 
-import 'screens/bottom_nav_bar.dart';
-import 'utils/question_provider.dart';
-import 'module/questions.dart';
+import 'package:truthordare/module/questions.dart';
+import 'package:truthordare/screens/pre_game/welcome_screen.dart';
+import 'package:truthordare/utils/player_provider.dart';
+import 'package:truthordare/utils/question_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   makeQuestions();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-  await Future.delayed(const Duration(seconds: 2));
+  await Future.delayed(const Duration(seconds: 1));
   FlutterNativeSplash.remove();
   runApp(
     MultiProvider(
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/main',
       routes: {
-        '/main': (context) => const BottomNavBar(),
+        '/main': (context) => const WelcomScreen(),
       },
     );
   }

@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
-import 'package:truthordare/settings/game_settings.dart';
-import 'package:truthordare/theme/app_consts.dart';
-import 'package:truthordare/utils/app_layout.dart';
-import 'package:truthordare/widgets/stylish/incremental_text.dart';
 
-import '../../settings/players_info.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_gradients.dart';
-import '../../utils/player_provider.dart';
-import '../../utils/question_provider.dart';
-import '../../widgets/buttons/fat_buttons.dart';
-import '../../widgets/cards/game_card.dart';
-import '../../widgets/stylish/Changing_text.dart';
-import '../../widgets/stylish/gradient_stack.dart';
-import '../question_screen.dart';
+import 'package:truthordare/screens/question_screen.dart';
+import 'package:truthordare/settings/game_settings.dart';
+import 'package:truthordare/settings/players_info.dart';
+import 'package:truthordare/theme/app_colors.dart';
+import 'package:truthordare/theme/app_consts.dart';
+import 'package:truthordare/theme/app_gradients.dart';
+import 'package:truthordare/utils/app_layout.dart';
+import 'package:truthordare/utils/player_provider.dart';
+import 'package:truthordare/utils/question_provider.dart';
+import 'package:truthordare/widgets/buttons/fat_buttons.dart';
+import 'package:truthordare/widgets/cards/game_card.dart';
+import 'package:truthordare/widgets/stylish/Changing_text.dart';
+import 'package:truthordare/widgets/stylish/gradient_stack.dart';
+import 'package:truthordare/widgets/stylish/incremental_text.dart';
 
 int testInt = 0;
 
@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: SizedBox.expand(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GameCard(
                 titleWidget: ChangingText(
@@ -69,6 +69,7 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
               ),
+              const Gap(40),
 
               //? ------------------------------------- Buttons -------------------------------------
               SizedBox(
@@ -121,7 +122,9 @@ class HomeScreen extends StatelessWidget {
                     )
                   ],
                 ),
-              )
+              ),
+
+              const Gap(30),
             ],
           ),
         ),
