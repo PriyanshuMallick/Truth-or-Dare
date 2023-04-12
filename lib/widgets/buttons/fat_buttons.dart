@@ -5,17 +5,21 @@ import '../../utils/app_layout.dart';
 
 class FatButton extends StatelessWidget {
   final String text;
-  final Color bgColor;
+  final Color? bgColor;
   final Function onTap;
-  final double height;
-  final double width;
+  final double? height;
+  final double? width;
+  final EdgeInsets? padding;
+  final Gradient? gradient;
   const FatButton({
     super.key,
     required this.text,
-    required this.bgColor,
+    this.bgColor,
     required this.onTap,
     this.height = 51,
     this.width = 135,
+    this.gradient,
+    this.padding,
   });
 
   @override
@@ -23,10 +27,12 @@ class FatButton extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap(),
       child: Container(
-        height: AppLayout.getHeight(height),
-        width: AppLayout.getWidth(width),
+        height: height,
+        width: width,
+        padding: padding,
         decoration: BoxDecoration(
           color: bgColor,
+          gradient: gradient,
           borderRadius: BorderRadius.circular(5),
         ),
         child: Center(
