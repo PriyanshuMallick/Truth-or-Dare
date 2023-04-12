@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import '../../theme/app_styles.dart';
 
 class ChangingText extends StatelessWidget {
-  final Function changingText;
-  final String text;
+  final String Function() changingText;
+  final String? text;
   final TextStyle style;
   final TextAlign textAlign;
   final Duration delay;
@@ -17,7 +17,7 @@ class ChangingText extends StatelessWidget {
 
   const ChangingText({
     super.key,
-    required this.text,
+    this.text,
     required this.changingText,
     this.style = AppStyles.headLineStyle3,
     this.textAlign = TextAlign.center,
@@ -31,9 +31,9 @@ class ChangingText extends StatelessWidget {
     final endTime = DateTime.now().add(duration);
     while (DateTime.now().isBefore(endTime)) {
       await Future.delayed(delay);
-      yield changingText().toString();
+      yield changingText();
     }
-    yield text;
+    yield text ?? changingText();
   }
 
   @override
