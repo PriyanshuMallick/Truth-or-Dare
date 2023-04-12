@@ -41,7 +41,6 @@ dependencies:
   gap: ^2.0.1
   provider: ^6.0.5
   fluttertoast: ^8.2.1
-  flutter_native_splash: ^2.2.19
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +52,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.19
+  flutter_launcher_icons: ^0.13.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -95,4 +96,9 @@ flutter:
 
 flutter_native_splash:
   color: "#190529"
-  image: assets/logo/app_logo_test.png
+  image: assets/icons/app_logo_test.png
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/app_logo_test.png"
