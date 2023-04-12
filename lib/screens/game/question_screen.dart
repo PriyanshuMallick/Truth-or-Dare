@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
-import '../../settings/players_info.dart';
-import '../../utils/question_provider.dart';
-import '../../widgets/stylish/incremental_text.dart';
-import '../../widgets/stylish/rotated_pattern.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_consts.dart';
-import '../../theme/app_gradients.dart';
-import '../../theme/app_styles.dart';
-import '../../widgets/buttons/fat_buttons.dart';
-import '../../widgets/cards/game_card.dart';
+import 'package:truthordare/providers/question_provider.dart';
+import 'package:truthordare/settings/players_info.dart';
+import 'package:truthordare/theme/app_colors.dart';
+import 'package:truthordare/theme/app_consts.dart';
+import 'package:truthordare/theme/app_gradients.dart';
+import 'package:truthordare/theme/app_styles.dart';
+import 'package:truthordare/widgets/buttons/fat_buttons.dart';
+import 'package:truthordare/widgets/cards/game_card.dart';
+import 'package:truthordare/widgets/stylish/incremental_text.dart';
+import 'package:truthordare/widgets/stylish/rotated_pattern.dart';
 
 class QuestionScreen extends StatelessWidget {
   final _qProvider = Provider.of<QuestionProvider>;
@@ -59,16 +59,19 @@ class QuestionScreen extends StatelessWidget {
               children: [
                 //? ----------------------------------- Heading -----------------------------------
                 Text(
-                  isTruth ? 'TRUTH' : 'DARE',
+                  PlayersInfo.currentPlayer.name,
+                  // isTruth ? 'Truth' : 'DARE',
                   style: AppStyles.headLineStyle2.copyWith(
                     color: isTruth ? AppColors.truthText : AppColors.dareText,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 const Gap(20),
 
                 //? ------------------------------------ Cards ------------------------------------
                 GameCard(
-                  title: PlayersInfo.currentPlayer.name,
+                  // title: PlayersInfo.currentPlayer.name,
+                  title: isTruth ? 'Truth' : 'DARE',
                   onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth),
                   gradient: isTruth ? AppGradients.truthCardBG : AppGradients.dareCardBG,
                   child: IncrementalText(text: _qProvider(context).currentQuestion),
