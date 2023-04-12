@@ -1,25 +1,42 @@
 import 'dart:math';
 
-import '../module/player.dart';
+import 'package:truthordare/module/player.dart';
 
 class PlayersInfo {
   static Random rand = Random();
-  static int get totalPlayers => 5;
+  static int get defaultTotalPlayers => 5;
+  static int _totalPlayers = defaultTotalPlayers;
+  static int get totalPlayers => _totalPlayers;
+  static set totalPlayers(int x) => _totalPlayers = x > 0 ? x : 1;
 
   static Player _currentPlayer = players.isNotEmpty ? players.first : Player('Player 0');
   static Player get currentPlayer => _currentPlayer;
 
-  static List<Player> players = [
-    Player('Adam'),
-    Player('Eve'),
-    Player('Avantika'),
-    Player('Ash'),
-    Player('Sam'),
-  ];
+  static List<Player> players = [];
+
+  static void updatePlayerList() {
+    if (totalPlayers == players.length) return;
+
+    if (totalPlayers < players.length) {
+      players.removeRange(totalPlayers, players.length);
+      return;
+    }
+
+    for (int i = players.length; i < totalPlayers; i++) {
+      players.add(Player('Player ${i + 1}'));
+    }
+  }
 
   static Player get randomPlayer {
-    int index = rand.nextInt(players.length);
-    _currentPlayer = players[index];
+    _currentPlayer = pseudoRandomPlayer;
     return _currentPlayer;
+  }
+
+  static Player get pseudoRandomPlayer {
+    int index = rand.nextInt(players.length);
+    while (_currentPlayer == players[index]) {
+      index = rand.nextInt(players.length);
+    }
+    return players[index];
   }
 }
