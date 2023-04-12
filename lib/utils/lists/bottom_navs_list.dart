@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../module/screen_navs.dart';
-import '../../screens/game/game_screen.dart';
-import '../../screens/pre_game/player_details_screen.dart';
-import '../../theme/app_styles.dart';
-import '../../widgets/stylish/incremental_text.dart';
+import 'package:truthordare/module/screen_navs.dart';
+import 'package:truthordare/screens/game/game_screen.dart';
+import 'package:truthordare/screens/pre_game/player_details_screen.dart';
+import 'package:truthordare/theme/app_styles.dart';
+import 'package:truthordare/widgets/stylish/incremental_text.dart';
 
 List<ScreenNavs> bottomNavsList = [
   ScreenNavs(
