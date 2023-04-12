@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-int theme_ = 2;
-
 class AppColors {
+  static int theme_ = 2;
   //? ------------------------- BG Color -------------------------
   // static const Color _bgColor1 = Color(0xFF021827); // Dark Blue
   // Method
@@ -42,6 +41,7 @@ class AppColors {
   static const Color darkPurple = Color(0xff4D1C69);
   static const Color purple = Color(0xff3E1257);
   static const Color lightPurple = Color(0xffA635FF);
+  static const Color lighterPurple = Color(0xffC86DFF);
 
   // List
   static const List<Color> homeScreen = [

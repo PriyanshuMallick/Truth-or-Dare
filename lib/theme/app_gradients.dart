@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
+import 'package:truthordare/theme/app_colors.dart';
 
 class AppGradients {
   static const List<LinearGradient> dareCardBG = [
@@ -93,11 +93,11 @@ class AppGradients {
       ],
     ),
     LinearGradient(
-      begin: Alignment.center,
+      begin: FractionalOffset(.5, .6),
       end: Alignment.bottomCenter,
       colors: [
         Colors.transparent,
-        Color.fromARGB(59, 22, 4, 28),
+        Color.fromARGB(255, 22, 4, 28),
       ],
     ),
   ];
@@ -111,6 +111,14 @@ class AppGradients {
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: AppColors.homeScreen,
+  );
+  static const LinearGradient inputFeild = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFFC86DFF),
+      Color(0xFF9011DD),
+    ],
   );
 
   static const LinearGradient transparent2Black = LinearGradient(

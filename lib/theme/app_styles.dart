@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'app_colors.dart';
+import 'package:truthordare/theme/app_colors.dart';
 
 class AppStyles {
   static TextStyle menuText = GoogleFonts.roboto(
@@ -27,6 +27,13 @@ class AppStyles {
   static const TextStyle headLineStyle3 = TextStyle(
     fontFamily: 'PirataOne',
     fontSize: 42.45,
+    color: AppColors.textColor1,
+    fontWeight: FontWeight.normal,
+  );
+
+  static const TextStyle headLineStyle3_1 = TextStyle(
+    fontFamily: 'PirataOne',
+    fontSize: 35,
     color: AppColors.textColor1,
     fontWeight: FontWeight.normal,
   );

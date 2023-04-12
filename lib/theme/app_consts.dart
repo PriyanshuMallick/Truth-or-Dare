@@ -1,6 +1,6 @@
 //? This File contains constans for the app layout
 
-import '../utils/app_layout.dart';
+import 'package:truthordare/utils/app_layout.dart';
 
 class AppConsts {
   //? Screen
@@ -9,4 +9,6 @@ class AppConsts {
 
   static const double cardHeight = 420;
   static const double cardWidth = 285;
+
+  static const double inputButtonWidth = 218;
 }
