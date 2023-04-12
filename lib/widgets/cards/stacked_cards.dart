@@ -38,9 +38,11 @@ class StackedCards extends StatelessWidget {
     );
   }
 
+  double get calculatedGap => (445 / (scaleFactor * 100) - 30 + gap).abs();
+
   List<Widget> getCards(int count) {
     List<Widget> cards = [];
-    final double gap = (445 / (scaleFactor * 100) - 30 + this.gap).abs();
+    final double gap = calculatedGap;
 
     for (int i = 0; i < count; i++) {
       cards.add(
@@ -54,6 +56,7 @@ class StackedCards extends StatelessWidget {
               gradients: gradients[i < gradients.length ? i : gradients.length - 1],
               color: i != count - 1 && darken ? Colors.black.withOpacity(opacityFactor * (count - i - 1)) : null,
               cardHeight: cardHeight,
+              cardWidth: cardWidth,
               child: i == count - 1 ? child : null,
             ),
           ),

@@ -1,7 +1,7 @@
 import 'package:truthordare/settings/game_rules.dart';
 
 class Player {
-  final String name;
+  String name;
 
   Player(
     this.name,
