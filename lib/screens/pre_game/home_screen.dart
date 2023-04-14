@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 import 'package:truthordare/screens/bottom_nav_bar.dart';
 import 'package:truthordare/theme/app_colors.dart';
@@ -17,27 +16,32 @@ class HomeScreen extends StatelessWidget {
         gradients: AppGradients.mainScreenBG,
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: SizedBox.expand(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Truth\nor\nDare'.toUpperCase(),
-                  style: AppStyles.headLineStyle1,
-                  textAlign: TextAlign.center,
-                ),
-                const Gap(50),
-                FatButton(
-                  text: 'Tap to begin!',
-                  width: 280,
-                  height: 55,
-                  bgColor: AppColors.purple,
-                  onTap: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BottomNavBar()),
+          body: SafeArea(
+            child: Container(
+              height: double.maxFinite,
+              width: double.maxFinite,
+              padding: const EdgeInsets.only(top: 60, bottom: 80),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Truth\nor\nDare'.toUpperCase(),
+                    style: AppStyles.headLineStyle1,
+                    textAlign: TextAlign.center,
                   ),
-                )
-              ],
+                  Expanded(child: Container()),
+                  FatButton(
+                    text: 'Tap to begin!',
+                    width: 280,
+                    height: 55,
+                    bgColor: AppColors.purple,
+                    onTap: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const BottomNavBar()),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ));
