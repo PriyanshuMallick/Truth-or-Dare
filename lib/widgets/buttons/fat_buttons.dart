@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/app_styles.dart';
-import '../../utils/app_layout.dart';
+import 'package:truthordare/theme/app_styles.dart';
 
 class FatButton extends StatelessWidget {
   final String text;
