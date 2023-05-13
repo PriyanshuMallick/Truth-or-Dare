@@ -35,18 +35,26 @@ class GameCard extends StatelessWidget {
       child: Column(
         children: [
           Gap(AppLayout.getHeight(20)),
+
+          //? Title Text
           if (title != null)
             Text(
               title ?? '',
               style: AppStyles.headLineStyle3,
             ),
+
+          //? Title Widget
           if (titleWidget != null) titleWidget!,
+
+          //? <HR>
           Gap(AppLayout.getHeight(5)),
           Container(
             height: 1,
             width: AppConsts.cardWidth * .85,
             color: Colors.white,
           ),
+
+          //? Body
           if (!center) Gap(AppLayout.getHeight(gap)),
           if (center) Expanded(child: Container()),
           Padding(
