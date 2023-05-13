@@ -32,11 +32,16 @@ class PlayersInfo {
     return _currentPlayer;
   }
 
+  static Player _prevPseudoRandomPlayer = _currentPlayer;
   static Player get pseudoRandomPlayer {
     int index = rand.nextInt(players.length);
-    while (_currentPlayer == players[index]) {
+
+    while (_prevPseudoRandomPlayer.name == players[index].name) {
       index = rand.nextInt(players.length);
     }
-    return players[index];
+
+    _prevPseudoRandomPlayer = players[index];
+
+    return _prevPseudoRandomPlayer;
   }
 }
