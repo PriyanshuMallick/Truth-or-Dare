@@ -51,7 +51,7 @@ class ChangingText extends StatelessWidget {
 
         double blur = (easedValue - 1).abs() * blurAmount;
 
-        if (!isBlur) {
+        if (!isBlur || blur <= 0) {
           return Text(
             displayedText,
             style: style,
