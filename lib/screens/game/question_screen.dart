@@ -55,46 +55,58 @@ class QuestionScreen extends StatelessWidget {
               ),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // const Gap(20),
+                Expanded(child: Container()),
+
                 //? ----------------------------------- Heading -----------------------------------
                 Text(
-                  PlayersInfo.currentPlayer.name,
-                  // isTruth ? 'Truth' : 'DARE',
+                  // PlayersInfo.currentPlayer.name,
+                  isTruth ? 'Truth' : 'DARE',
                   style: AppStyles.headLineStyle2.copyWith(
                     color: isTruth ? AppColors.truthText : AppColors.dareText,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const Gap(20),
+
+                Expanded(child: Container()),
 
                 //? ------------------------------------ Cards ------------------------------------
                 GameCard(
-                  // title: PlayersInfo.currentPlayer.name,
-                  title: isTruth ? 'Truth' : 'DARE',
+                  title: PlayersInfo.currentPlayer.name,
+                  // title: isTruth ? 'Truth' : 'DARE',
                   onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth),
                   gradient: isTruth ? AppGradients.truthCardBG : AppGradients.dareCardBG,
                   child: IncrementalText(text: _qProvider(context).currentQuestion),
                 ),
 
+                Expanded(child: Container()),
                 //? ----------------------------------- Buttons -----------------------------------
-                const Gap(50),
+
+                Expanded(child: Container()),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    //? ------------------------------ COMPLETED Buttons-------------------------------
                     FatButton(
                       text: 'COMPLETED',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
                       onTap: () => Navigator.pop(context),
                     ),
                     const Gap(15),
+                    //? ------------------------------- FORFEIT Buttons -------------------------------
                     FatButton(
                       text: 'FORFEIT',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
                       onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth),
                     ),
                   ],
-                )
+                ),
+
+                const Gap(50),
+                Expanded(child: Container()),
               ],
             ),
           ),

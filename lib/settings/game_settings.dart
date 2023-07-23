@@ -1,4 +1,6 @@
 class GameSettings {
+  static bool isGameMode = false;
+
   static bool canGoToQuestionScreen = true;
 
   static int _maxPlayers = 20;
