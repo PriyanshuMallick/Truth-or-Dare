@@ -38,7 +38,6 @@ class _AniStackedCardsState extends State<AniStackedCards> with SingleTickerProv
   void _onPanEnd(DragEndDetails details) {
     if (dragDistance > 1) {
       widget.onTap();
-      print('\n$dragDistance\n');
       dragDistance = 0;
     }
   }
