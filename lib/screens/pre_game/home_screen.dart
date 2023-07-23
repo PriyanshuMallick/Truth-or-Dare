@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import 'package:truthordare/screens/bottom_nav_bar.dart';
-import 'package:truthordare/theme/app_colors.dart';
+import 'package:truthordare/screens/game/game_screen.dart';
+import 'package:truthordare/settings/game_settings.dart';
 import 'package:truthordare/theme/app_gradients.dart';
 import 'package:truthordare/theme/app_styles.dart';
 import 'package:truthordare/widgets/buttons/fat_buttons.dart';
@@ -30,16 +32,38 @@ class HomeScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   Expanded(child: Container()),
+
+                  //? --------------------------------- Game Mode Button ---------------------------------
                   FatButton(
-                    text: 'Tap to begin!',
+                    text: 'Game Mode',
                     width: 280,
-                    height: 55,
-                    bgColor: AppColors.purple,
-                    onTap: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const BottomNavBar()),
-                    ),
+                    // width: AppConsts.inputButtonWidth,
+                    gradient: AppGradients.inputFeild,
+                    onTap: () {
+                      GameSettings.isGameMode = true;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const BottomNavBar()),
+                      );
+                    },
                   ),
+
+                  const Gap(35),
+
+                  //? ------------------------------- Question Only Button -------------------------------
+                  FatButton(
+                    text: 'Question Only',
+                    width: 280,
+                    // width: AppConsts.inputButtonWidth,
+                    gradient: AppGradients.inputFeild,
+                    onTap: () {
+                      GameSettings.isGameMode = false;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const GameScreen()),
+                      );
+                    },
+                  )
                 ],
               ),
             ),
