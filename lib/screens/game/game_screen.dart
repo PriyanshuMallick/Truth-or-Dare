@@ -25,6 +25,19 @@ final Random rand = Random();
 class GameScreen extends StatelessWidget {
   const GameScreen({super.key});
   final _pProvider = Provider.of<PlayerProvider>;
+
+  void goToQuestionsPage(BuildContext context, {required bool isTruth}) {
+    Provider.of<QuestionProvider>(context, listen: false).updateQuestion(isTruth: isTruth);
+    if (GameSettings.canGoToQuestionScreen) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => QuestionScreen(isTruth: isTruth),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GradientStack(
@@ -47,13 +60,16 @@ class GameScreen extends StatelessWidget {
                     ? ChangingText(
                         // isBlur: false,
                         text: _pProvider(context).currentPlayer.name,
-                        duration: Duration(milliseconds: GameSettings.randomizationTimeInMilisec),
+                        duration: Duration(milliseconds: GameSettings.playerSelectionTimeInMilisec),
                         changingText: () {
                           if (GameSettings.canGoToQuestionScreen) {
                             GameSettings.canGoToQuestionScreen = false;
 
+                            // Wait for a player to be randomly selected
+                            // before being able to do to the next screen
+                            // wait for GameSettings.playerSelectionTimeInMilisec + 1s
                             Future.delayed(
-                              Duration(milliseconds: GameSettings.randomizationTimeInMilisec + 1000),
+                              Duration(milliseconds: GameSettings.playerSelectionTimeInMilisec + 1000),
                               () => GameSettings.canGoToQuestionScreen = true,
                             );
                           }
@@ -61,18 +77,21 @@ class GameScreen extends StatelessWidget {
                           return PlayersInfo.pseudoRandomPlayer.name;
                         },
                       )
-                    : const Text(
-                        'Choose One',
+                    : const IncrementalText(
+                        text: 'Choose One',
                         style: AppStyles.headLineStyle3,
                         textAlign: TextAlign.center,
                       ),
                 gradient: AppGradients.purpleCardBG,
                 onTap: () => _pProvider(context).updatePlayer(),
                 child: GameSettings.isGameMode
+                    // Wait for a player to be randomly selected
+                    // before writing the text in the card
+                    // wait for GameSettings.playerSelectionTimeInMilisec + .1s
                     ? FutureBuilder(
                         future: Future.delayed(
                           Duration(
-                            milliseconds: GameSettings.randomizationTimeInMilisec + 100,
+                            milliseconds: GameSettings.playerSelectionTimeInMilisec + 100,
                           ),
                         ),
                         builder: (context, snapshot) {
@@ -85,9 +104,11 @@ class GameScreen extends StatelessWidget {
                           }
                         },
                       )
-                    : const Text(
-                        'Truth\nor\nDare?',
-                        style: AppStyles.headLineStyle3_1,
+                    // No need to wait since in Questions Mode we don't have individual Players
+                    : const IncrementalText(
+                        // text: 'Truth\nor\nDare?',
+                        text: 'Will you reveal the truth or take on a dare?',
+                        // style: AppStyles.headLineStyle3_1,
                         textAlign: TextAlign.center,
                       ),
               ),
@@ -106,34 +127,14 @@ class GameScreen extends StatelessWidget {
                         FatButton(
                           text: 'Truth',
                           bgColor: AppColors.purple,
-                          onTap: () {
-                            Provider.of<QuestionProvider>(context, listen: false).updateQuestion(true);
-                            if (GameSettings.canGoToQuestionScreen) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const QuestionScreen(isTruth: true),
-                                ),
-                              );
-                            }
-                          },
+                          onTap: () => goToQuestionsPage(context, isTruth: true),
                         ),
 
                         //? ------------------------------- Dare Buttom -------------------------------
                         FatButton(
                           text: 'Dare',
                           bgColor: AppColors.purple,
-                          onTap: () {
-                            Provider.of<QuestionProvider>(context, listen: false).updateQuestion(false);
-                            if (GameSettings.canGoToQuestionScreen) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const QuestionScreen(isTruth: false),
-                                ),
-                              );
-                            }
-                          },
+                          onTap: () => goToQuestionsPage(context, isTruth: false),
                         ),
                       ],
                     ),
@@ -149,12 +150,7 @@ class GameScreen extends StatelessWidget {
                       // else Random Button selects Truth or Dare Randomly
                       onTap: () => GameSettings.isGameMode
                           ? _pProvider(context, listen: false).updatePlayer()
-                          : Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => QuestionScreen(isTruth: rand.nextBool()),
-                              ),
-                            ),
+                          : goToQuestionsPage(context, isTruth: false),
                     )
                   ],
                 ),
