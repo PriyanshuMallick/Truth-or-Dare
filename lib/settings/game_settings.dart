@@ -16,6 +16,6 @@ class GameSettings {
           : min;
 
   static int _randomizationTimeInMilisec = 2000;
-  static int get randomizationTimeInMilisec => _randomizationTimeInMilisec;
-  static set randomizationTimeInMilisec(int ms) => _randomizationTimeInMilisec = ms < 0 ? 0 : ms;
+  static int get playerSelectionTimeInMilisec => _randomizationTimeInMilisec;
+  static set playerSelectionTimeInMilisec(int ms) => _randomizationTimeInMilisec = ms < 0 ? 0 : ms;
 }
