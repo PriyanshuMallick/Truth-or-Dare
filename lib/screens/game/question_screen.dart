@@ -76,7 +76,7 @@ class QuestionScreen extends StatelessWidget {
                 GameCard(
                   title: PlayersInfo.currentPlayer.name,
                   // title: isTruth ? 'Truth' : 'DARE',
-                  onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth),
+                  onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth: isTruth),
                   gradient: isTruth ? AppGradients.truthCardBG : AppGradients.dareCardBG,
                   child: IncrementalText(text: _qProvider(context).currentQuestion),
                 ),
@@ -100,7 +100,7 @@ class QuestionScreen extends StatelessWidget {
                     FatButton(
                       text: 'FORFEIT',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
-                      onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth),
+                      onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth: isTruth),
                     ),
                   ],
                 ),

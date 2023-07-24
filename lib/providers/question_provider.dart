@@ -7,7 +7,7 @@ class QuestionProvider extends ChangeNotifier {
 
   String get currentQuestion => _currentQuestion;
 
-  void updateQuestion(bool isTruth) {
+  void updateQuestion({required bool isTruth}) {
     if (isTruth) {
       _currentQuestion = Questions.randomTruth;
     } else {
