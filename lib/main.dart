@@ -13,7 +13,7 @@ import 'package:truthordare/settings/players_info.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  makeQuestions();
+  Questions.makeQuestions();
   PlayersInfo.updatePlayerList();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
