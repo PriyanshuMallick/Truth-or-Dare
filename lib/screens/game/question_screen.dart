@@ -10,7 +10,7 @@ import 'package:truthordare/theme/app_gradients.dart';
 import 'package:truthordare/theme/app_styles.dart';
 import 'package:truthordare/widgets/buttons/fat_buttons.dart';
 import 'package:truthordare/widgets/cards/game_card.dart';
-import 'package:truthordare/widgets/stylish/incremental_text.dart';
+import 'package:truthordare/widgets/text/incremental_text.dart';
 import 'package:truthordare/widgets/stylish/rotated_pattern.dart';
 
 class QuestionScreen extends StatelessWidget {

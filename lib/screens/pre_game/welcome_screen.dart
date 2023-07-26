@@ -7,7 +7,7 @@ import 'package:truthordare/widgets/stylish/gradient_stack.dart';
 
 import '../../utils/app_layout.dart';
 import '../../widgets/cards/stacked_cards.dart';
-import '../../widgets/stylish/incremental_text.dart';
+import '../../widgets/text/incremental_text.dart';
 
 class WelcomScreen extends StatelessWidget {
   const WelcomScreen({super.key});

@@ -5,7 +5,7 @@ import 'package:truthordare/module/screen_navs.dart';
 import 'package:truthordare/screens/game/game_screen.dart';
 import 'package:truthordare/screens/pre_game/player_details_screen.dart';
 import 'package:truthordare/theme/app_styles.dart';
-import 'package:truthordare/widgets/stylish/incremental_text.dart';
+import 'package:truthordare/widgets/text/incremental_text.dart';
 
 List<ScreenNavs> bottomNavsList = [
   ScreenNavs(

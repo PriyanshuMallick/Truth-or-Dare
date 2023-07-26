@@ -16,9 +16,9 @@ import 'package:truthordare/providers/player_provider.dart';
 import 'package:truthordare/providers/question_provider.dart';
 import 'package:truthordare/widgets/buttons/fat_buttons.dart';
 import 'package:truthordare/widgets/cards/game_card.dart';
-import 'package:truthordare/widgets/stylish/Changing_text.dart';
+import 'package:truthordare/widgets/text/Changing_text.dart';
 import 'package:truthordare/widgets/stylish/gradient_stack.dart';
-import 'package:truthordare/widgets/stylish/incremental_text.dart';
+import 'package:truthordare/widgets/text/incremental_text.dart';
 
 final Random rand = Random();
 
