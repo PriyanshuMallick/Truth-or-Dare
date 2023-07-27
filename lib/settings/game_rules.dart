@@ -1,4 +1,6 @@
 class GameRules {
+  static int startingScore = 10;
+
   static int darePenalty = 1;
   static int truthPenalty = 1;
 

@@ -29,7 +29,11 @@ class Player {
   int get totalTruth => _totalTruthCompleted + _totalDareForfeited;
 
   int get penalty => _totalTruthForfeited * GameRules.truthPenalty + _totalDareForfeited * GameRules.darePenalty;
-  int get score => (_totalTruthCompleted * GameRules.truthScore + _totalDareCompleted * GameRules.truthScore) - penalty;
+  int get score =>
+      _totalTruthCompleted * GameRules.truthScore +
+      _totalDareCompleted * GameRules.dareScore -
+      penalty +
+      GameRules.startingScore;
 
   @override
   String toString() => name;
