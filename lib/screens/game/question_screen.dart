@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
 import 'package:truthordare/providers/question_provider.dart';
+import 'package:truthordare/settings/game_settings.dart';
 import 'package:truthordare/settings/players_info.dart';
 import 'package:truthordare/theme/app_colors.dart';
 import 'package:truthordare/theme/app_consts.dart';
@@ -91,14 +92,14 @@ class QuestionScreen extends StatelessWidget {
                   children: [
                     //? ------------------------------ COMPLETED Buttons-------------------------------
                     FatButton(
-                      text: 'COMPLETED',
+                      text: 'Completed',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
                       onTap: () => Navigator.pop(context),
                     ),
                     const Gap(15),
                     //? ------------------------------- FORFEIT Buttons -------------------------------
                     FatButton(
-                      text: 'FORFEIT',
+                      text: GameSettings.isGameMode ? 'Forfeit' : 'Next',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
                       onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth: isTruth),
                     ),
