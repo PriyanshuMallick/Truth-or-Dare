@@ -46,38 +46,34 @@ class PlayerDetailsScreen extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                            // Without Center() the type becomes List<StatelessWidget>
-                            // and Dart does allow the merge of addPlayerFields()
-                            // which returns List<Widget>
-                            const Center(),
-                            Text(
-                              'Total Players',
-                              style: AppStyles.headLineStyle4.copyWith(fontSize: 30),
-                            ),
-                            const HorizontalLine(),
-                            const Gap(10),
-                            TextInputButton(
-                              text: _pProvider(context).totalPlayers.toString(),
-                              title: 'Enter total no. of players',
-                              isAlphaNumeric: false,
-                              maxNumValue: GameSettings.maxPlayers,
-                              minNumValue: GameSettings.minPlayers,
-                              onDone: (text) {
-                                if (text.isNotEmpty) {
-                                  _pProvider(context, listen: false)
-                                      .updateTotalPlayers(int.tryParse(text) ?? PlayersInfo.totalPlayers);
-                                }
-                              },
-                            ),
-                            const Gap(35),
-                            Text(
-                              'Player\'s Name',
-                              style: AppStyles.headLineStyle4.copyWith(fontSize: 30),
-                            ),
-                            const HorizontalLine(),
-                            const Gap(10),
-                          ] +
-                          addPlayerFields(context),
+                        Text(
+                          'Total Players',
+                          style: AppStyles.headLineStyle4.copyWith(fontSize: 30),
+                        ),
+                        const HorizontalLine(),
+                        const Gap(10),
+                        TextInputButton(
+                          text: _pProvider(context).totalPlayers.toString(),
+                          title: 'Enter total no. of players',
+                          isAlphaNumeric: false,
+                          maxNumValue: GameSettings.maxPlayers,
+                          minNumValue: GameSettings.minPlayers,
+                          onDone: (text) {
+                            if (text.isNotEmpty) {
+                              _pProvider(context, listen: false)
+                                  .updateTotalPlayers(int.tryParse(text) ?? PlayersInfo.totalPlayers);
+                            }
+                          },
+                        ),
+                        const Gap(35),
+                        Text(
+                          'Player\'s Name',
+                          style: AppStyles.headLineStyle4.copyWith(fontSize: 30),
+                        ),
+                        const HorizontalLine(),
+                        const Gap(10),
+                        ...addPlayerFields(context),
+                      ],
                     ),
                   ],
                 ),
@@ -104,16 +100,14 @@ class PlayerDetailsScreen extends StatelessWidget {
 
     for (int index = 0; index < totalPlayers; index++) {
       list.add(
-        Center(
-          child: TextInputButton(
-            text: _pProvider(context).players[index].toString(),
-            title: 'Enter player 1\'s name'.toUpperCase(),
-            onDone: (name) {
-              if (name.isNotEmpty) {
-                _pProvider(context, listen: false).updatePlayerName(name, index);
-              }
-            },
-          ),
+        TextInputButton(
+          text: _pProvider(context).players[index].toString(),
+          title: 'Enter player 1\'s name'.toUpperCase(),
+          onDone: (name) {
+            if (name.isNotEmpty) {
+              _pProvider(context, listen: false).updatePlayerName(name, index);
+            }
+          },
         ),
       );
       list.add(const Gap(20));
