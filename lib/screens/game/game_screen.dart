@@ -67,13 +67,12 @@ class GameScreen extends StatelessWidget {
 
                             // Wait for a player to be randomly selected
                             // before being able to do to the next screen
-                            // wait for GameSettings.playerSelectionTimeInMilisec + 1s
+                            // wait for GameSettings.playerSelectionTimeInMilisec + .1s
                             Future.delayed(
-                              Duration(milliseconds: GameSettings.playerSelectionTimeInMilisec + 1000),
+                              Duration(milliseconds: GameSettings.playerSelectionTimeInMilisec + 100),
                               () => GameSettings.canGoToQuestionScreen = true,
                             );
                           }
-
                           return PlayersInfo.pseudoRandomPlayer.name;
                         },
                       )
