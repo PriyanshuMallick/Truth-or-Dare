@@ -51,4 +51,11 @@ class AppStyles {
     color: AppColors.textColor1,
     fontWeight: FontWeight.normal,
   );
+
+  static const TextStyle scoreCardSubtitle = TextStyle(
+    fontFamily: 'PirataOne',
+    fontSize: 12,
+    color: AppColors.textColor1,
+    fontWeight: FontWeight.normal,
+  );
 }
