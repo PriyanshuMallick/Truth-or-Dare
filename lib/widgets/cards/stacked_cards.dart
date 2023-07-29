@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:truthordare/theme/app_consts.dart';
 
 import 'my_card.dart';
 
@@ -24,8 +25,8 @@ class StackedCards extends StatelessWidget {
     this.scaleFactor = .11,
     this.opacityFactor = .2,
     this.color,
-    this.cardHeight,
-    this.cardWidth,
+    this.cardHeight = AppConsts.cardHeight,
+    this.cardWidth = AppConsts.cardWidth,
     this.gap = 0,
     this.darken = true,
     this.boxShadow,
@@ -52,11 +53,13 @@ class StackedCards extends StatelessWidget {
             scale: 1 - scaleFactor * (repeat - i - 1),
             alignment: Alignment.topCenter,
             child: MyCard(
-              boxShadow: boxShadow,
-              gradients: gradients[i < gradients.length ? i : gradients.length - 1],
-              color: i != count - 1 && darken ? Colors.black.withOpacity(opacityFactor * (count - i - 1)) : null,
               cardHeight: cardHeight,
               cardWidth: cardWidth,
+              boxShadow: boxShadow,
+              gradients: gradients[i < gradients.length ? i : gradients.length - 1],
+              // Except the top card all the other cards has darkend a little bit
+              color: i != count - 1 && darken ? Colors.black.withOpacity(opacityFactor * (count - i - 1)) : null,
+              // If top card then add child else skip
               child: i == count - 1 ? child : null,
             ),
           ),

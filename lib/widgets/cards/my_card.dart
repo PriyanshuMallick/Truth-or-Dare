@@ -15,16 +15,16 @@ class MyCard extends StatelessWidget {
     required this.gradients,
     this.child,
     this.color,
-    this.cardHeight,
-    this.cardWidth,
+    this.cardHeight = AppConsts.cardHeight,
+    this.cardWidth = AppConsts.cardWidth,
     this.boxShadow,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: cardHeight ?? AppConsts.cardHeight,
-      width: cardWidth ?? AppConsts.cardWidth,
+      height: cardHeight,
+      width: cardWidth,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
         boxShadow: boxShadow,
