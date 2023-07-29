@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:truthordare/module/screen_navs.dart';
 import 'package:truthordare/screens/game/game_screen.dart';
+import 'package:truthordare/screens/pre_game/scoreboard_screen.dart';
 import 'package:truthordare/screens/pre_game/player_details_screen.dart';
 import 'package:truthordare/theme/app_styles.dart';
 import 'package:truthordare/widgets/text/incremental_text.dart';
@@ -11,7 +12,7 @@ List<ScreenNavs> bottomNavsList = [
   ScreenNavs(
     title: 'Navigation',
     icon: FontAwesomeIcons.compass,
-    screen: getTestScreen(title: 'Navigation'),
+    screen: const ScoreBoardScreen(),
   ),
   ScreenNavs(
     title: 'Home',
@@ -22,7 +23,6 @@ List<ScreenNavs> bottomNavsList = [
     title: 'Profile',
     icon: FontAwesomeIcons.userNinja,
     screen: const PlayerDetailsScreen(),
-    // screen: getTestScreen('Profile'),
   )
 ];
 
