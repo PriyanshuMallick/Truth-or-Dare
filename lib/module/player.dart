@@ -13,11 +13,11 @@ class Player {
   int _totalDareForfeited = 0;
   int _totalTruthForfeited = 0;
 
-  set dareCompleted(_) => _totalDareCompleted++;
-  set truthCompleted(_) => _totalTruthCompleted++;
+  void dareCompleted() => _totalDareCompleted++;
+  void truthCompleted() => _totalTruthCompleted++;
 
-  set dareForfeited(_) => _totalDareForfeited++;
-  set truthForfeited(_) => _totalTruthForfeited++;
+  void dareForfeited() => _totalDareForfeited++;
+  void truthForfeited() => _totalTruthForfeited++;
 
   int get totalDareCompleted => _totalDareCompleted;
   int get totalTruthCompleted => _totalTruthCompleted;
@@ -25,8 +25,11 @@ class Player {
   int get totalDareForfeited => _totalDareForfeited;
   int get totalTruthForfeited => _totalTruthForfeited;
 
-  int get totalDare => _totalTruthCompleted + _totalDareForfeited;
-  int get totalTruth => _totalTruthCompleted + _totalDareForfeited;
+  int get totalCompleted => _totalTruthCompleted + _totalDareCompleted;
+  int get totalForfeited => _totalTruthForfeited + _totalDareForfeited;
+
+  int get totalDare => _totalDareCompleted + _totalDareForfeited;
+  int get totalTruth => _totalTruthCompleted + _totalTruthForfeited;
 
   int get penalty => _totalTruthForfeited * GameRules.truthPenalty + _totalDareForfeited * GameRules.darePenalty;
   int get score =>
