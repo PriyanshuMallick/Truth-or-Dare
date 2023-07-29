@@ -17,7 +17,11 @@ import 'package:truthordare/widgets/stylish/rotated_pattern.dart';
 class QuestionScreen extends StatelessWidget {
   final _qProvider = Provider.of<QuestionProvider>;
   final bool isTruth;
-  const QuestionScreen({super.key, required this.isTruth});
+
+  const QuestionScreen({
+    super.key,
+    required this.isTruth,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +87,8 @@ class QuestionScreen extends StatelessWidget {
                 ),
 
                 Expanded(child: Container()),
-                //? ----------------------------------- Buttons -----------------------------------
 
-                Expanded(child: Container()),
+                //? ----------------------------------- Buttons -----------------------------------
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -94,14 +97,26 @@ class QuestionScreen extends StatelessWidget {
                     FatButton(
                       text: 'Completed',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
-                      onTap: () => Navigator.pop(context),
+                      onTap: () {
+                        Navigator.pop(context);
+
+                        isTruth
+                            ? PlayersInfo.currentPlayer.truthCompleted()
+                            : PlayersInfo.currentPlayer.dareCompleted();
+                      },
                     ),
                     const Gap(15),
                     //? ------------------------------- FORFEIT Buttons -------------------------------
                     FatButton(
                       text: GameSettings.isGameMode ? 'Forfeit' : 'Next',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
-                      onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth: isTruth),
+                      onTap: () {
+                        _qProvider(context, listen: false).updateQuestion(isTruth: isTruth);
+
+                        isTruth
+                            ? PlayersInfo.currentPlayer.truthForfeited()
+                            : PlayersInfo.currentPlayer.dareForfeited();
+                      },
                     ),
                   ],
                 ),
