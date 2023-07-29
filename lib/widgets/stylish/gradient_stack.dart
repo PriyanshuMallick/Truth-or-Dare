@@ -6,15 +6,11 @@ class GradientStack extends StatelessWidget {
   const GradientStack({
     super.key,
     required this.gradients,
-    required this.child,
+    this.child,
   });
   @override
   Widget build(BuildContext context) {
-    return gradients.isNotEmpty
-        ? getGradients(0)
-        : child != null
-            ? child!
-            : Container();
+    return gradients.isNotEmpty ? getGradients(0) : child ?? Container();
   }
 
   Widget getGradients(int index) {
