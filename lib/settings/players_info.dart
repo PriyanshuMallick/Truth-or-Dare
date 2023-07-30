@@ -14,6 +14,17 @@ class PlayersInfo {
 
   static List<Player> players = [];
 
+  static void resetPlayersScore() {
+    for (var player in players) {
+      player.resetScore();
+    }
+  }
+
+  static void resetPlayersList() {
+    players = [];
+    updatePlayerList();
+  }
+
   static void updatePlayerList() {
     if (totalPlayers == players.length) return;
 
@@ -33,6 +44,7 @@ class PlayersInfo {
   }
 
   static Player _prevPseudoRandomPlayer = _currentPlayer;
+
   static Player get pseudoRandomPlayer {
     int index = rand.nextInt(players.length);
 
