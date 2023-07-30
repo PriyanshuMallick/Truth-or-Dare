@@ -38,7 +38,7 @@ class QuestionScreen extends StatelessWidget {
             scale: 3.5,
             widget: Text(
               isTruth ? '?' : '!',
-              style: AppStyles.headLineStyle2.copyWith(
+              style: AppStyles.title.copyWith(
                 fontSize: 50,
                 color: const Color.fromARGB(8, 255, 255, 255),
               ),
@@ -69,7 +69,7 @@ class QuestionScreen extends StatelessWidget {
                 Text(
                   // PlayersInfo.currentPlayer.name,
                   isTruth ? 'Truth' : 'DARE',
-                  style: AppStyles.headLineStyle2.copyWith(
+                  style: AppStyles.title.copyWith(
                     color: isTruth ? AppColors.truthText : AppColors.dareText,
                   ),
                   textAlign: TextAlign.center,
@@ -79,7 +79,7 @@ class QuestionScreen extends StatelessWidget {
 
                 //? ------------------------------------ Cards ------------------------------------
                 GameCard(
-                  title: PlayersInfo.currentPlayer.name,
+                  title: GameSettings.isGameMode ? PlayersInfo.currentPlayer.name : '/\\/\\', // '/\/\'
                   // title: isTruth ? 'Truth' : 'DARE',
                   onTap: () => _qProvider(context, listen: false).updateQuestion(isTruth: isTruth),
                   gradient: isTruth ? AppGradients.truthCardBG : AppGradients.dareCardBG,
@@ -97,26 +97,16 @@ class QuestionScreen extends StatelessWidget {
                     FatButton(
                       text: 'Completed',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
-                      onTap: () {
-                        Navigator.pop(context);
-
-                        isTruth
-                            ? PlayersInfo.currentPlayer.truthCompleted()
-                            : PlayersInfo.currentPlayer.dareCompleted();
-                      },
+                      onTap: () => onComplete(context),
                     ),
+
                     const Gap(15),
+
                     //? ------------------------------- FORFEIT Buttons -------------------------------
                     FatButton(
                       text: GameSettings.isGameMode ? 'Forfeit' : 'Next',
                       bgColor: isTruth ? AppColors.truthButton : AppColors.dareButton,
-                      onTap: () {
-                        _qProvider(context, listen: false).updateQuestion(isTruth: isTruth);
-
-                        isTruth
-                            ? PlayersInfo.currentPlayer.truthForfeited()
-                            : PlayersInfo.currentPlayer.dareForfeited();
-                      },
+                      onTap: () => onForfeit(context),
                     ),
                   ],
                 ),
@@ -129,5 +119,21 @@ class QuestionScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  onForfeit(BuildContext context) {
+    _qProvider(context, listen: false).updateQuestion(isTruth: isTruth);
+
+    if (GameSettings.isGameMode) {
+      isTruth ? PlayersInfo.currentPlayer.truthForfeited() : PlayersInfo.currentPlayer.dareForfeited();
+    }
+  }
+
+  onComplete(BuildContext context) {
+    Navigator.pop(context);
+
+    if (GameSettings.isGameMode) {
+      isTruth ? PlayersInfo.currentPlayer.truthCompleted() : PlayersInfo.currentPlayer.dareCompleted();
+    }
   }
 }
