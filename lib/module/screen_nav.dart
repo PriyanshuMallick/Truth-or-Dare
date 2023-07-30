@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ScreenNavs {
+class ScreenNav {
   final String title;
   final IconData icon;
   final Widget screen;
 
-  ScreenNavs({
+  ScreenNav({
     required this.title,
     required this.icon,
     required this.screen,

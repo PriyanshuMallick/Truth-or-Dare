@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:truthordare/module/screen_navs.dart';
+import 'package:truthordare/module/screen_nav.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/app_consts.dart';
@@ -8,7 +8,7 @@ import '../utils/app_layout.dart';
 import 'stylish/gradient_stack.dart';
 
 class NavBar extends StatelessWidget {
-  final List<ScreenNavs> navList;
+  final List<ScreenNav> navList;
   final double? width;
   final double height;
   final double iconSize;
@@ -26,28 +26,31 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GradientStack(
       gradients: AppGradients.bottomNavBG,
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        Container(
-          height: 1,
-          width: AppConsts.screenWidth,
-          color: AppColors.homeScreenBottomNavBorder,
-        ),
-        Row(
-          children: getBottomNavs(
-            context,
-            navList,
-            width: (width == null ? AppConsts.screenWidth : width!) / navList.length,
-            height: AppLayout.getHeight(height),
-            iconSize: iconSize,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 1,
+            width: AppConsts.screenWidth,
+            color: AppColors.homeScreenBottomNavBorder,
           ),
-        ),
-      ]),
+          Row(
+            children: getBottomNavs(
+              context,
+              navList,
+              width: (width == null ? AppConsts.screenWidth : width!) / navList.length,
+              height: AppLayout.getHeight(height),
+              iconSize: iconSize,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   List<Widget> getBottomNavs(
     BuildContext context,
-    List<ScreenNavs> navList, {
+    List<ScreenNav> navList, {
     required double width,
     required double height,
     required double iconSize,
@@ -71,6 +74,7 @@ class NavBar extends StatelessWidget {
         ),
       );
     }
+
     return list;
   }
 }
