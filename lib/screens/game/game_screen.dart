@@ -78,7 +78,7 @@ class GameScreen extends StatelessWidget {
                       )
                     : const IncrementalText(
                         text: 'Choose One',
-                        style: AppStyles.headLineStyle3,
+                        style: AppStyles.cardTitle,
                         textAlign: TextAlign.center,
                       ),
                 gradient: AppGradients.purpleCardBG,
@@ -105,9 +105,7 @@ class GameScreen extends StatelessWidget {
                       )
                     // No need to wait since in Questions Mode we don't have individual Players
                     : const IncrementalText(
-                        // text: 'Truth\nor\nDare?',
                         text: 'Will you reveal the truth or take on a dare?',
-                        // style: AppStyles.headLineStyle3_1,
                         textAlign: TextAlign.center,
                       ),
               ),
@@ -149,7 +147,7 @@ class GameScreen extends StatelessWidget {
                       // else Random Button selects Truth or Dare Randomly
                       onTap: () => GameSettings.isGameMode
                           ? _pProvider(context, listen: false).updatePlayer()
-                          : goToQuestionsPage(context, isTruth: false),
+                          : goToQuestionsPage(context, isTruth: rand.nextBool()),
                     )
                   ],
                 ),
