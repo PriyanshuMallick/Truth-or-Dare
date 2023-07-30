@@ -39,19 +39,22 @@ class PlayerDetailsScreen extends StatelessWidget {
                 scaleFactor: 0.1,
                 darken: false,
                 gradients: const [AppGradients.playerInfoBG2],
-                // child: getTestScreen(title: 'Profile'),
                 child: ListView(
                   padding: const EdgeInsets.symmetric(vertical: 35),
                   shrinkWrap: true,
                   children: [
+                    //? --------------------------------- Inputs Feilds ---------------------------------
                     Column(
                       children: [
+                        //? ------------------------------- Total Players -------------------------------
                         Text(
                           'Total Players',
-                          style: AppStyles.headLineStyle4.copyWith(fontSize: 30),
+                          style: AppStyles.cardSubtitle.copyWith(fontSize: 30),
                         ),
                         const HorizontalLine(),
                         const Gap(10),
+
+                        //? ---------------------------- Total Players Input ----------------------------
                         TextInputButton(
                           text: _pProvider(context).totalPlayers.toString(),
                           title: 'Enter total no. of players',
@@ -66,18 +69,24 @@ class PlayerDetailsScreen extends StatelessWidget {
                           },
                         ),
                         const Gap(35),
+
+                        //? ------------------------------- Player's Name -------------------------------
                         Text(
                           'Player\'s Name',
-                          style: AppStyles.headLineStyle4.copyWith(fontSize: 30),
+                          style: AppStyles.cardSubtitle.copyWith(fontSize: 30),
                         ),
                         const HorizontalLine(),
                         const Gap(10),
+
+                        //? ---------------------------- Player's Name Input ----------------------------
                         ...addPlayerFields(context),
                       ],
                     ),
                   ],
                 ),
               ),
+
+              //? ---------------------------------- Start Game Button ----------------------------------
               FatButton(
                 text: 'Start The Game!',
                 width: AppConsts.inputButtonWidth,
