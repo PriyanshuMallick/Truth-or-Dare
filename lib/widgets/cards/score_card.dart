@@ -32,7 +32,7 @@ class ScoreCard extends StatelessWidget {
                   //? ----------------------------------------- Name -----------------------------------------
                   Text(
                     player.name,
-                    style: AppStyles.headLineStyle4,
+                    style: AppStyles.cardSubtitle,
                   ),
 
                   //? ------------------------------ Completed & Forfeit Score ------------------------------
@@ -58,7 +58,7 @@ class ScoreCard extends StatelessWidget {
             //? ------------------------------------------ Score ------------------------------------------
             Text(
               player.score.toString(),
-              style: AppStyles.headLineStyle2,
+              style: AppStyles.title,
             ),
           ],
         ),

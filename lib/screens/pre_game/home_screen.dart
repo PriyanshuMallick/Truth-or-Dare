@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:truthordare/screens/bottom_nav_bar.dart';
 import 'package:truthordare/screens/game/game_screen.dart';
 import 'package:truthordare/settings/game_settings.dart';
+import 'package:truthordare/settings/players_info.dart';
 import 'package:truthordare/theme/app_gradients.dart';
 import 'package:truthordare/theme/app_styles.dart';
 import 'package:truthordare/widgets/buttons/fat_buttons.dart';
@@ -28,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Truth\nor\nDare'.toUpperCase(),
-                    style: AppStyles.headLineStyle1,
+                    style: AppStyles.bigTitle,
                     textAlign: TextAlign.center,
                   ),
                   Expanded(child: Container()),

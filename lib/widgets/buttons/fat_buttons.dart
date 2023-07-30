@@ -37,7 +37,7 @@ class FatButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: AppStyles.headLineStyle5,
+            style: AppStyles.buttonText,
           ),
         ),
       ),

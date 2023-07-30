@@ -14,7 +14,7 @@ class IncrementalText extends StatelessWidget {
   const IncrementalText({
     super.key,
     required this.text,
-    this.style = AppStyles.headLineStyle4,
+    this.style = AppStyles.cardSubtitle,
     this.speed = const Duration(milliseconds: 50),
     this.textAlign = TextAlign.center,
     this.isBlur = true,

@@ -19,7 +19,7 @@ class ChangingText extends StatelessWidget {
     super.key,
     this.text,
     required this.changingText,
-    this.style = AppStyles.headLineStyle3,
+    this.style = AppStyles.cardTitle,
     this.textAlign = TextAlign.center,
     this.delay = const Duration(milliseconds: 90),
     this.duration = const Duration(seconds: 4),

@@ -40,7 +40,7 @@ class WelcomScreen extends StatelessWidget {
                     const Gap(30),
                     const IncrementalText(
                       text: 'Welcome',
-                      style: AppStyles.headLineStyle3,
+                      style: AppStyles.cardTitle,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),

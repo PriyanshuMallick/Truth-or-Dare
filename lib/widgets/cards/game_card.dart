@@ -40,7 +40,7 @@ class GameCard extends StatelessWidget {
           if (title != null)
             Text(
               title ?? '',
-              style: AppStyles.headLineStyle3,
+              style: AppStyles.cardTitle,
             ),
 
           //? Title Widget

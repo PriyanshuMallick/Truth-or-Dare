@@ -29,7 +29,7 @@ class ScoreBoardScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 100, bottom: 100),
                     child: Text(
                       'ScoreBoard'.toUpperCase(),
-                      style: AppStyles.headLineStyle3,
+                      style: AppStyles.cardTitle,
                     ),
                   ),
                 ),
