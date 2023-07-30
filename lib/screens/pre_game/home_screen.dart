@@ -42,6 +42,7 @@ class HomeScreen extends StatelessWidget {
                     gradient: AppGradients.inputFeild,
                     onTap: () {
                       GameSettings.isGameMode = true;
+                      PlayersInfo.resetPlayersScore();
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const BottomNavBar()),
