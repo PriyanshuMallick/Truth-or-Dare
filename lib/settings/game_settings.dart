@@ -7,7 +7,7 @@ class GameSettings {
   static int get maxPlayers => _maxPlayers;
   static set maxPlayers(int max) => _maxPlayers = max < _minPlayers ? _minPlayers + 1 : max;
 
-  static int _minPlayers = 1;
+  static int _minPlayers = 2;
   static int get minPlayers => _minPlayers;
   static set minPlayers(int min) => _minPlayers = min < 1
       ? 1
