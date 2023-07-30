@@ -19,6 +19,14 @@ class Player {
   void dareForfeited() => _totalDareForfeited++;
   void truthForfeited() => _totalTruthForfeited++;
 
+  void resetScore() {
+    _totalDareCompleted = 0;
+    _totalTruthCompleted = 0;
+
+    _totalDareForfeited = 0;
+    _totalTruthForfeited = 0;
+  }
+
   int get totalDareCompleted => _totalDareCompleted;
   int get totalTruthCompleted => _totalTruthCompleted;
 
